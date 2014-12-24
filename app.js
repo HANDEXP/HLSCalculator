@@ -19,7 +19,8 @@ Ext.application({
         'HLSCalculator.utils.Common',
         'HLSCalculator.utils.Data',
         'HLSCalculator.utils.Template',
-        'Ext.Label'
+        'Ext.Label',
+        'Ext.Toast'
     ],
 
     views: [

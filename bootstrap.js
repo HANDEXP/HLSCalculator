@@ -640,12 +640,16 @@ Ext.ClassManager.addNameAlternateMappings({
     "Ext.viewport.WP"
   ],
   "HLSCalculator.store.BrandStore": [],
+  "HLSCalculator.store.FinancialPlanStore": [],
   "HLSCalculator.store.PriceStore": [],
   "HLSCalculator.store.SeriesStore": [],
   "HLSCalculator.store.TypeStore": [],
   "HLSCalculator.utils.Common": [],
   "HLSCalculator.utils.Data": [],
   "HLSCalculator.utils.Template": [],
+  "HLSCalculator.view.FinancialPlan": [],
+  "HLSCalculator.view.FinancialPlanItem1": [],
+  "HLSCalculator.view.FinancialPlanItem2": [],
   "HLSCalculator.view.HeaderCmp": [],
   "HLSCalculator.view.LoanCalcPage": [],
   "HLSCalculator.view.Main": [],
@@ -1375,6 +1379,9 @@ Ext.ClassManager.addNameAliasMappings({
   "HLSCalculator.store.BrandStore": [
     "widget.brandstore"
   ],
+  "HLSCalculator.store.FinancialPlanStore": [
+    "widget.financialplanstore"
+  ],
   "HLSCalculator.store.PriceStore": [
     "widget.pricestore"
   ],
@@ -1387,6 +1394,15 @@ Ext.ClassManager.addNameAliasMappings({
   "HLSCalculator.utils.Common": [],
   "HLSCalculator.utils.Data": [],
   "HLSCalculator.utils.Template": [],
+  "HLSCalculator.view.FinancialPlan": [
+    "widget.financialplan"
+  ],
+  "HLSCalculator.view.FinancialPlanItem1": [
+    "widget.financialplanitem1"
+  ],
+  "HLSCalculator.view.FinancialPlanItem2": [
+    "widget.financialplanitem2"
+  ],
   "HLSCalculator.view.HeaderCmp": [
     "widget.xheader"
   ],

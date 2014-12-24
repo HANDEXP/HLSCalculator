@@ -7,7 +7,12 @@ Ext.define('HLSCalculator.utils.Data',{
         brand: '',
         series: '',
         type: '',
-        price: ''
+        price: '',
+        downPercentage: '',
+        downPayment: '',
+        loan: '',
+        period: '',
+        monthlyPayment: ''
     },
     constructor: function(config) {
         this.initConfig(config);

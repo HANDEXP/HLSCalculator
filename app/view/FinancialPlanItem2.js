@@ -31,7 +31,7 @@ Ext.define('HLSCalculator.view.FinancialPlanItem2',{
             {
                 xtype : 'img',
                 style: 'background-size:  100%,100%;margin-left: 10px;margin-right: 10px;',
-                src : '../../resources/images/plan1.png',
+                src : 'resources/images/plan1.png',
                 flex: 2.5
             },
             {

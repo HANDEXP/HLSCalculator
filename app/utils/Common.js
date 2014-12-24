@@ -28,6 +28,10 @@ Ext.define('HLSCalculator.utils.Common',{
                 default:
                     return true;
             }
+        },
+        //增加百分号
+        format4payment: function(payment){
+            return (Math.round(payment * 10000)/100).toFixed(2) + '%'
         }
     }
 });

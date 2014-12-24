@@ -69,8 +69,17 @@ Ext.define('HLSCalculator.view.SelectAutoPage', {
                             HLSCalculator.utils.Data.setPrice(selectfield._value.data.price);
                             var string = [HLSCalculator.utils.Data.getBrand(), HLSCalculator.utils.Data.getType()].join(' ');
                             //带出车型和厂商指导价
-                            HLSCalculator.utils.Common.isValid(HLSCalculator.utils.Data.getPrice()) ? Ext.getCmp('autoTypeCmp').setValue(string) : Ext.getCmp('autoTypeCmp').setValue('请先选择车系和车型');
                             Ext.getCmp('guidingPriceCmp').setValue(HLSCalculator.utils.Common.format4price(HLSCalculator.utils.Data.getPrice()));
+                            if(HLSCalculator.utils.Common.isValid(HLSCalculator.utils.Data.getPrice())){
+                                Ext.getCmp('autoTypeCmp').setValue(string);
+                                Ext.Function.createDelayed(
+                                    function(){
+                                        Ext.getCmp('mainCmp').setActiveItem(3);
+                                    }
+                                ,1200)();
+                            }else{
+                                Ext.getCmp('autoTypeCmp').setValue('请先选择车系和车型');
+                            }
 
                         }
                     }

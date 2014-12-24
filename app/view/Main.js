@@ -1,6 +1,7 @@
 Ext.define('HLSCalculator.view.Main', {
     extend: 'Ext.tab.Panel',
     xtype: 'main',
+    id: 'mainCmp',
     requires: [
         'Ext.TitleBar',
         'Ext.Video',

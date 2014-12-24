@@ -36,19 +36,55 @@ Ext.define('HLSCalculator.view.LoanCalcPage',{
                 },{
                     xtype: 'textfield',
                     label: '按首付款比例',
+                    id: 'downPercentageCmp',
                     labelWidth: '8em',
                     name: 'downPercentage',
-                    labelCls: 'calc-item'
+                    labelCls: 'calc-item',
+                    listeners: {
+                        change: function(that,newValue,oldValue,eOpts ){
+
+                        }
+                    }
                 },{
                     xtype: 'textfield',
                     label: '按首付款金额',
+                    id: 'downPaymentCmp',
                     labelWidth: '8em',
                     name: 'downPayment',
                     labelCls: 'calc-item',
-                    //component: {xtype: 'input', type: 'number', fastFocus: true},
+                    component: {xtype: 'input', type: 'number', fastFocus: true},
                     listeners: {
                         change: function(that,newValue,oldValue,eOpts ){
-                            alert();
+                            if(!HLSCalculator.utils.Common.isValid(newValue)){
+                                return;
+                            }
+                            var downPercentageValue = newValue / HLSCalculator.utils.Data.getPrice();
+                            if(!isFinite(downPercentageValue)){
+                                Ext.toast(
+                                    {
+                                        message: '请先选择车型',
+                                        timeout: 1000,
+                                        listeners:
+                                        {
+                                            hide: function(that,eOpts){
+                                                Ext.getCmp('mainCmp').setActiveItem(0)
+                                            }
+                                        }
+                                    }
+                                );
+                                return;
+                            }
+                            if(downPercentageValue > 1){
+                                Ext.toast('首付金额超过购车全款。');
+                                newValue = parseInt(HLSCalculator.utils.Data.getPrice());
+                                //that.setValue(newValue);
+                                downPercentageValue = 1;
+                            }
+                            //设置按首付款比例
+                            Ext.getCmp('downPercentageCmp').setValue(HLSCalculator.utils.Common.format4payment(downPercentageValue));
+                            //设置按首付款金额
+                            //debugger;
+                            that.setValue(newValue);
                         }
                     }
                 },{
