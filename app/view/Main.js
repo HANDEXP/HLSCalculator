@@ -18,6 +18,12 @@ Ext.define('HLSCalculator.view.Main', {
                 xtype: 'selectautopage'
             },
             {
+                title : '金融方案',
+                iconCls: 'action',
+                xtype: 'financialplan'
+
+            },
+            {
                 title: '贷款计算器',
                 iconCls: 'action',
                 xtype: 'loancalcpage'
@@ -26,31 +32,6 @@ Ext.define('HLSCalculator.view.Main', {
                 title: '报价',
                 iconCls: 'favorites',
                 xtype: 'quotepage'
-            },
-            {
-                title : '金融方案',
-                iconCls: 'action',
-                xtype: 'financialplan'
-
-            },
-            {
-                title: 'Welcome',
-                iconCls: 'home',
-
-                styleHtmlContent: true,
-                scrollable: true,
-
-                items: {
-                    docked: 'top',
-                    xtype: 'titlebar',
-                    title: 'Welcome to Sencha Touch 2'
-                },
-
-                html: [
-                    "You've just generated a new Sencha Touch 2 project. What you're looking at right now is the ",
-                    "contents of <a target='_blank' href=\"app/view/Main.js\">app/view/Main.js</a> - edit that file ",
-                    "and refresh to change what's rendered here."
-                ].join("")
             }
 
         ]

@@ -74,7 +74,7 @@ Ext.define('HLSCalculator.view.SelectAutoPage', {
                                 Ext.getCmp('autoTypeCmp').setValue(string);
                                 Ext.Function.createDelayed(
                                     function(){
-                                        Ext.getCmp('mainCmp').setActiveItem(3);
+                                        Ext.getCmp('mainCmp').setActiveItem(1);
                                     }
                                 ,1200)();
                             }else{
