@@ -14,13 +14,29 @@ Ext.application({
     name: 'HLSCalculator',
 
     requires: [
-        'Ext.MessageBox'
+        'Ext.MessageBox',
+        'Ext.data.Store',
+        'HLSCalculator.utils.Common',
+        'HLSCalculator.utils.Data',
+        'HLSCalculator.utils.Template',
+        'Ext.Label'
     ],
 
     views: [
-        'Main'
+        'Main',
+        'PickerDemo',
+        'SelectAutoPage',
+        'LoanCalcPage',
+        'QuotePage',
+        'HeaderCmp',
+        'QuoteItemCmp'
     ],
 
+    stores: [
+        'SeriesStore',
+        'BrandStore',
+        'TypeStore'
+    ],
     icon: {
         '57': 'resources/icons/Icon.png',
         '72': 'resources/icons/Icon~ipad.png',
@@ -44,6 +60,7 @@ Ext.application({
         Ext.fly('appLoadingIndicator').destroy();
 
         // Initialize the main view
+
         Ext.Viewport.add(Ext.create('HLSCalculator.view.Main'));
     },
 

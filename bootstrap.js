@@ -639,7 +639,20 @@ Ext.ClassManager.addNameAlternateMappings({
   "Ext.viewport.WindowsPhone": [
     "Ext.viewport.WP"
   ],
-  "HLSCalculator.view.Main": []
+  "HLSCalculator.store.BrandStore": [],
+  "HLSCalculator.store.PriceStore": [],
+  "HLSCalculator.store.SeriesStore": [],
+  "HLSCalculator.store.TypeStore": [],
+  "HLSCalculator.utils.Common": [],
+  "HLSCalculator.utils.Data": [],
+  "HLSCalculator.utils.Template": [],
+  "HLSCalculator.view.HeaderCmp": [],
+  "HLSCalculator.view.LoanCalcPage": [],
+  "HLSCalculator.view.Main": [],
+  "HLSCalculator.view.PickerDemo": [],
+  "HLSCalculator.view.QuoteItemCmp": [],
+  "HLSCalculator.view.QuotePage": [],
+  "HLSCalculator.view.SelectAutoPage": []
 });
 Ext.ClassManager.addNameAliasMappings({
   "Ext.AbstractComponent": [],
@@ -1359,7 +1372,40 @@ Ext.ClassManager.addNameAliasMappings({
   "Ext.viewport.Ios": [],
   "Ext.viewport.Viewport": [],
   "Ext.viewport.WindowsPhone": [],
+  "HLSCalculator.store.BrandStore": [
+    "widget.brandstore"
+  ],
+  "HLSCalculator.store.PriceStore": [
+    "widget.pricestore"
+  ],
+  "HLSCalculator.store.SeriesStore": [
+    "widget.seriesstore"
+  ],
+  "HLSCalculator.store.TypeStore": [
+    "widget.typestore"
+  ],
+  "HLSCalculator.utils.Common": [],
+  "HLSCalculator.utils.Data": [],
+  "HLSCalculator.utils.Template": [],
+  "HLSCalculator.view.HeaderCmp": [
+    "widget.xheader"
+  ],
+  "HLSCalculator.view.LoanCalcPage": [
+    "widget.loancalcpage"
+  ],
   "HLSCalculator.view.Main": [
     "widget.main"
+  ],
+  "HLSCalculator.view.PickerDemo": [
+    "widget.pickerdemo"
+  ],
+  "HLSCalculator.view.QuoteItemCmp": [
+    "widget.xquoteitem"
+  ],
+  "HLSCalculator.view.QuotePage": [
+    "widget.quotepage"
+  ],
+  "HLSCalculator.view.SelectAutoPage": [
+    "widget.selectautopage"
   ]
 });

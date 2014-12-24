@@ -7,4 +7,4 @@ packager.json
 packages/
 touch/
 .sencha/
-
+.idea/

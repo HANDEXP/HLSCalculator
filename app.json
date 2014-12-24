@@ -39,10 +39,10 @@
      *      }
      */
     "js": [
-		{
-			"path": "cordova.js",
-			"remote": true
-		},
+//		{
+//			"path": "cordova.js",
+//			"remote": true
+//		},
         {
             "path": "touch/sencha-touch.js",
             "x-bootstrap": true
@@ -76,7 +76,7 @@
      */
     "css": [
         {
-            "path": "resources/css/app.css",
+            "path": "resources/css/custom.css",
             "update": "delta"
         }
     ],
@@ -135,5 +135,5 @@
      * Uniquely generated id for this application, used as prefix for localStorage keys.
      * Normally you should never change this value.
      */
-    "id": "6999bcc6-d64c-4fac-ad02-7b08daddde7a"
+    "id": "11b3e707-17fe-4d52-9e42-51a3073cd8a0"
 }
