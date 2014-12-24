@@ -7,4 +7,5 @@ packager.json
 packages/
 touch/
 .sencha/
+.DS_Store
 
