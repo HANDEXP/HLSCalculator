@@ -6,4 +6,5 @@ packager.temp.json
 packager.json
 packages/
 touch/
+.sencha/
 
