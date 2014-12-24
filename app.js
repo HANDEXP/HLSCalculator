@@ -29,13 +29,15 @@ Ext.application({
         'LoanCalcPage',
         'QuotePage',
         'HeaderCmp',
-        'QuoteItemCmp'
+        'QuoteItemCmp',
+        'FinancialPlan'
     ],
 
     stores: [
         'SeriesStore',
         'BrandStore',
-        'TypeStore'
+        'TypeStore',
+        'FinancialPlanStore'
     ],
     icon: {
         '57': 'resources/icons/Icon.png',

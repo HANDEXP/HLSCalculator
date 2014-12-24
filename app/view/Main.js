@@ -27,6 +27,12 @@ Ext.define('HLSCalculator.view.Main', {
                 xtype: 'quotepage'
             },
             {
+                title : '金融方案',
+                iconCls: 'action',
+                xtype: 'financialplan'
+
+            },
+            {
                 title: 'Welcome',
                 iconCls: 'home',
 
