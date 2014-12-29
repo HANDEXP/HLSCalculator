@@ -20,7 +20,7 @@ Ext.define('HLSCalculator.view.Main', {
             {
                 title : '金融方案',
                 iconCls: 'action',
-                xtype: 'financialcard'
+                xtype: 'financialplan'
 
             },
             {
@@ -32,6 +32,12 @@ Ext.define('HLSCalculator.view.Main', {
                 title: '报价',
                 iconCls: 'favorites',
                 xtype: 'quotepage'
+            },
+            {
+                title : '金融方案',
+                iconCls : 'action',
+                xtype : ''
+
             }
 
 

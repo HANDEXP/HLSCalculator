@@ -1,0 +1,37 @@
+[
+  {
+    "price_list" : "1",  //主键
+    "downpayment_ratio" : "20%", //首付比例
+    "annual_rate" : "13%" ,//年利率
+    "annual_pay_items" : "12" ,//支付频率
+    "nper" : "24"   ,//期数
+    "fv_ratio"   : "10%" ,//大额尾款
+    "pay_type_ratio" :  "0%", //先付后付
+    "plan_name" : "标准信贷", // 方案名
+    "plan_title" : "标准信贷 － 等额月供信贷产品",
+    "plan_desc" : "标准信贷在世界各地得到人们的广泛信赖。",
+    "plan_pic" : ""
+
+
+  },
+  {
+    "price_list" : "2",  //主键
+    "downpayment_ratio" : "10%", //首付比例
+    "annual_rate" : "15%" ,//年利率
+    "annual_pay_items" : "12" ,//支付频率
+    "nper" : "24"   ,//期数
+    "fv_ratio"   : "20%" ,//大额尾款
+    "pay_type_ratio" :  "0%", //先付后付
+    "plan_name" : "弹性信贷", // 方案名
+    "plan_title" : "弹性信贷 － 时尚创新信贷产品",
+    "plan_desc" : "弹性信贷既能有效地保持您资产的流通性，也让您拥有灵活度更大的财务支配空间与更多生活方式的选择",
+    "plan_pic" : ""
+
+
+  }
+
+
+
+
+
+]

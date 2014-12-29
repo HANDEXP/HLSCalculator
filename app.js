@@ -35,7 +35,7 @@ Ext.application({
         'QuotePage',
         'HeaderCmp',
         'QuoteItemCmp',
-        'FinancialPlan'
+        'FinancialCard'
     ],
 
     stores: [
@@ -50,7 +50,8 @@ Ext.application({
         'HLSCalculator.model.Brand',
         'HLSCalculator.model.Series',
         'HLSCalculator.model.Type',
-        'HLSCalculator.model.Pic'
+        'HLSCalculator.model.Pic',
+        'HLSCalculator.model.FinalcialPlan'
     ],
     icon: {
         '57': 'resources/icons/Icon.png',
@@ -76,6 +77,47 @@ Ext.application({
         //localStorage.clear();
         //localStorage.setItem("jsonData",Ext.JSON.encode(json));
         // Initialize the main view
+
+        Ext.Viewport.add({
+            xtype: 'titlebar',
+            docked: 'top',
+            title: '',
+            items: [
+                {
+                    iconCls: 'home',
+                    align: 'left',
+                    listeners : {
+                        tap : function()
+                        {
+                            var mainCmp = Ext.getCmp('mainCmp');
+                            var title = mainCmp.getActiveItem().title
+                            if(title ==  '金融方案'){
+                                ////2
+                                mainCmp.setActiveItem(0);
+                            }
+
+                            if(title ==  '贷款计算器'){
+                                //////3
+                                mainCmp.setActiveItem(1);
+                            }
+
+                            if(title == '报价'){
+                                //////4
+                                mainCmp.setActiveItem(2);
+
+                            }
+
+
+
+
+                        }
+
+
+
+                    }
+                }
+            ]
+        });
 
         Ext.Viewport.add(Ext.create('HLSCalculator.view.Main'));
 

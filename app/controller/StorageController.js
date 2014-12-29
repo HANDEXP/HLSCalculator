@@ -20,8 +20,25 @@ Ext.define('HLSCalculator.controller.StorageController', {
     },
     syncFn: function(){
         var json;
+
+        //financialPlanData.json
+         Ext.Ajax.request({
+            url: 'financialPlanData.json',
+             success : function(response){
+                 var text = response.responseText;
+                 alert(text);
+
+             },
+             failure : function(response){
+
+             }
+
+
+         });
+
+
         Ext.Ajax.request({
-            url: 'http://m.hand-china.com/dev/data.json',
+            url: 'data.json',
             success: function(response){
                 var text = response.responseText;
                 json = eval("("+text+")");
