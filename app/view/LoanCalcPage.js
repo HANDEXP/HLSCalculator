@@ -41,7 +41,14 @@ Ext.define('HLSCalculator.view.LoanCalcPage',{
                     name: 'downPercentage',
                     labelCls: 'calc-item',
                     listeners: {
-                        change: function(that,newValue,oldValue,eOpts ){
+                        blur: function(that,e,eOpts ){
+                            var newValue = that.getValue();
+                            if(!HLSCalculator.utils.Common.isValid(newValue)){
+                                return;
+                            }
+                            var downPayment = parseFloat(HLSCalculator.utils.Data.getPrice()) * (parseFloat(newValue) > 1 || newValue.charAt(newValue.length - 1) == '%' ? parseFloat(newValue)/100 : parseFloat(newValue));
+                            console.log(downPayment);
+                            Ext.getCmp('downPaymentCmp').setValue(downPayment);
 
                         }
                     }
@@ -54,7 +61,8 @@ Ext.define('HLSCalculator.view.LoanCalcPage',{
                     labelCls: 'calc-item',
                     component: {xtype: 'input', type: 'number', fastFocus: true},
                     listeners: {
-                        change: function(that,newValue,oldValue,eOpts ){
+                        change: function(that,e,eOpts ){
+                            var newValue = that.getValue();
                             if(!HLSCalculator.utils.Common.isValid(newValue)){
                                 return;
                             }

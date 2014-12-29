@@ -13,6 +13,9 @@ Ext.define('HLSCalculator.utils.Common',{
         //判断值是否有效
         isValid: function(value) {
             switch (value){
+                case null:
+                    return false;
+                    break;
                 case '':
                     return false;
                     break;

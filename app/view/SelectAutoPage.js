@@ -9,18 +9,23 @@ Ext.define('HLSCalculator.view.SelectAutoPage', {
             xtype: 'fieldset',
             style: 'margin: .5em .5em .5em;',
             items: [
+                //{
+                //    xtype: 'button',
+                //    id: 'sync',
+                //    text: '同步'
+                //
+                //},
                 {
                     xtype: 'selectfield',
                     id: 'brandSelectFieldCmp',
                     label: '品牌',
-                    placeHolder: '请选择品牌',
                     store: 'brandstore',
                     listeners: {
                         change: function (selectfield, newValue, oldValue, eOpts) {
                             var store = Ext.getStore('seriesstore');
                             store.setFilters({
-                                property: "brand",
-                                value: new RegExp("default|" + newValue)
+                                property: "brand_id",
+                                value: new RegExp("1|" + selectfield._value.data.brand_id)
                             });
                             store.load();
                             var cmp = Ext.getCmp('seriesSelectFieldCmp');
@@ -39,8 +44,8 @@ Ext.define('HLSCalculator.view.SelectAutoPage', {
                         change: function (selectfield, newValue, oldValue, eOpts) {
                             var store = Ext.getStore('typestore');
                             store.setFilters({
-                                property: "series",
-                                value: new RegExp("default|" + newValue)
+                                property: "series_id",
+                                value: new RegExp("1|" + selectfield._value.data.series_id)
                             });
                             store.load();
                             var cmp = Ext.getCmp('typeSelectFieldCmp');
@@ -55,14 +60,20 @@ Ext.define('HLSCalculator.view.SelectAutoPage', {
                     store: 'typestore',
                     listeners: {
                         change: function (selectfield, newValue, oldValue, eOpts) {
+                            //同步初始化时跳过
+                            if(oldValue == null){
+                                return;
+                            }
                             var imageCmp = Ext.getCmp('imageCmp');
                             var seriesValue = Ext.getCmp('seriesSelectFieldCmp').getValue();
                             //换图片
-                            seriesValue == 'default' ? null : imageCmp.setSrc('resources/images/' + seriesValue.split('-')[1].toUpperCase() + '.jpg')
+                            //seriesValue == 'default' ? null : imageCmp.setSrc('resources/images/' + seriesValue.split('-')[1].toUpperCase() + '.jpg')
+                            var base64 =  Ext.getStore('picstore').findRecord('pic_id',selectfield._value.data.pic_id).data.base64;
+                            imageCmp.setSrc(base64);
                             //显示报价和车型号
                             selectfield._value.data.price == '' ? Ext.getCmp('priceLabelCmp').setHtml('厂商指导价：暂无') : Ext.getCmp('priceLabelCmp').setHtml("厂商指导价：" + '¥ ' + HLSCalculator.utils.Common.format4price(selectfield._value.data.price));
                             selectfield._value.data.value == 'default' ? Ext.getCmp('typeLabelCmp').setHtml('请选择车系和车型') : Ext.getCmp('typeLabelCmp').setHtml([Ext.getCmp('brandSelectFieldCmp')._value.data.text, selectfield._value.data.text].join(' '));
-                            //debugger;
+
                             //存入信息
                             HLSCalculator.utils.Data.setSeries(selectfield._value.data.series);
                             HLSCalculator.utils.Data.setType(selectfield._value.data.text);
@@ -74,7 +85,7 @@ Ext.define('HLSCalculator.view.SelectAutoPage', {
                                 Ext.getCmp('autoTypeCmp').setValue(string);
                                 Ext.Function.createDelayed(
                                     function(){
-                                        Ext.getCmp('mainCmp').setActiveItem(1);
+                                        //Ext.getCmp('mainCmp').setActiveItem(1);
                                     }
                                 ,1200)();
                             }else{

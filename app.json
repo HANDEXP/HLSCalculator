@@ -39,10 +39,14 @@
      *      }
      */
     "js": [
-//		{
-//			"path": "cordova.js",
-//			"remote": true
-//		},
+		{
+			"path": "cordova.js",
+			"remote": false
+		},
+        {
+            "path": "SQLitePlugin.js",
+            "remote": false
+        },
         {
             "path": "touch/sencha-touch.js",
             "x-bootstrap": true
@@ -109,7 +113,8 @@
     "resources": [
         "resources/images",
         "resources/icons",
-        "resources/startup"
+        "resources/startup",
+        "resources/data"
     ],
 
     /**

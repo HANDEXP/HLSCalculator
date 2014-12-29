@@ -1,13 +1,13 @@
 /**
  * Created by gonglixuan on 14/12/20.
  */
-Ext.define('HLSCalculator.store.BrandStore',{
+Ext.define('HLSCalculator.store.PicStore',{
     extend: 'Ext.data.Store',
     requires: ['Ext.data.proxy.LocalStorage'],
-    xtype: 'brandstore',
+    xtype: 'picstore',
     config: {
-        storeId: 'brandstore',
-        model: 'HLSCalculator.model.Brand',
+        storeId: 'picstore',
+        model: 'HLSCalculator.model.Pic',
         autoLoad: true,
         //proxy: {
         //    type: 'ajax',
@@ -19,7 +19,7 @@ Ext.define('HLSCalculator.store.BrandStore',{
         //}
         proxy: {
             type: 'localstorage',
-            id: 'brand'
+            id: 'pic'
         }
     }
 });

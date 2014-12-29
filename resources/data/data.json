@@ -1,0 +1,52 @@
+{
+  "brands" : [
+    {
+      "id" : 1,
+      "text" : "请选择品牌",
+      "value" : "default"
+    },
+    {
+      "id" : 2,
+      "text" : "奔驰",
+      "value" : "mercedes-benz"
+    }
+  ],
+  "series" : [
+    {
+      "id" : 1,
+      "text" : "请选择车系",
+      "value" : "default",
+      "brand_id": -1
+    }, {
+      "id" : 2,
+      "text" : "C级",
+      "value" : "series-c",
+      "brand_id": 2
+    },{
+      "id" : 3,
+      "text" : "E级",
+      "value" : "series-e",
+      "brand_id": 2
+    },{
+      "id" : 4,
+      "text" : "GLK级",
+      "value" : "series-glk",
+      "brand_id": 2
+    },{
+      "id" : 5,
+      "text" : "A级",
+      "value" : "series-a",
+      "brand_id": 2
+    },{
+      "id" : 6,
+      "text" : "B级",
+      "value" : "series-b",
+      "brand_id": 2
+    },{
+      "id" : 7,
+      "text" : "CLA级",
+      "value" : "series-cla",
+      "brand_id": 2
+    }
+  ]
+}

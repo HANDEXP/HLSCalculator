@@ -639,9 +639,14 @@ Ext.ClassManager.addNameAlternateMappings({
   "Ext.viewport.WindowsPhone": [
     "Ext.viewport.WP"
   ],
+  "HLSCalculator.controller.StorageController": [],
+  "HLSCalculator.model.Brand": [],
+  "HLSCalculator.model.Pic": [],
+  "HLSCalculator.model.Series": [],
+  "HLSCalculator.model.Type": [],
   "HLSCalculator.store.BrandStore": [],
   "HLSCalculator.store.FinancialPlanStore": [],
-  "HLSCalculator.store.PriceStore": [],
+  "HLSCalculator.store.PicStore": [],
   "HLSCalculator.store.SeriesStore": [],
   "HLSCalculator.store.TypeStore": [],
   "HLSCalculator.utils.Common": [],
@@ -1376,14 +1381,19 @@ Ext.ClassManager.addNameAliasMappings({
   "Ext.viewport.Ios": [],
   "Ext.viewport.Viewport": [],
   "Ext.viewport.WindowsPhone": [],
+  "HLSCalculator.controller.StorageController": [],
+  "HLSCalculator.model.Brand": [],
+  "HLSCalculator.model.Pic": [],
+  "HLSCalculator.model.Series": [],
+  "HLSCalculator.model.Type": [],
   "HLSCalculator.store.BrandStore": [
     "widget.brandstore"
   ],
   "HLSCalculator.store.FinancialPlanStore": [
     "widget.financialplanstore"
   ],
-  "HLSCalculator.store.PriceStore": [
-    "widget.pricestore"
+  "HLSCalculator.store.PicStore": [
+    "widget.picstore"
   ],
   "HLSCalculator.store.SeriesStore": [
     "widget.seriesstore"
