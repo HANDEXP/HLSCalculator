@@ -7,34 +7,77 @@ Ext.define('HLSCalculator.controller.StorageController', {
         models: ['Brand','Series','Type'],
         stores: ['BrandStore','SeriesStore','TypeStore'],
         refs: {
-            selectautopage: 'selectautopage'
+            selectautopage: 'selectautopage',
+            main: 'main'
         },
         control: {
             selectautopage: {
                 initialize: 'onSelectPageActivate'
+            },
+            main: {
+                activeitemchange: 'onItemActivate'
             }
         }
     },
     onSelectPageActivate: function() {
         this.syncFn();
     },
+    onItemActivate: function(newActiveItem, that, oldActiveItem, eOpts){
+        //debugger;
+        switch (that.title){
+            case '报价':
+                this.onQuotePageActive();
+                break;
+            default :
+                break;
+        }
+    },
+    onQuotePageActive: function() {
+        //车型
+        var type = [HLSCalculator.utils.Data.getBrand(), HLSCalculator.utils.Data.getType()].join(' ');
+        Ext.getCmp("quotetype").setData({quoteItemTitle: "车型",quoteItemValue: type});
+        //产品
+        var plan = HLSCalculator.utils.Data.getPlanName();
+        Ext.getCmp("quoteplan").setData({quoteItemTitle: "产品",quoteItemValue: plan});
+        //车价
+        var price = HLSCalculator.utils.Data.getPrice();
+        Ext.getCmp("quoteprice").setData({quoteItemTitle: "车价",quoteItemValue: price});
+        //首付比例
+        var downPaymentRatio = HLSCalculator.utils.Data.getDownPaymentRatio();
+        Ext.getCmp("quotedownpaymentratio").setData({quoteItemTitle: "首付比例",quoteItemValue: downPaymentRatio});
+        //首付金额
+        var downPayment = HLSCalculator.utils.Data.getDownPayment();
+        Ext.getCmp("quotedownpayment").setData({quoteItemTitle: "首付金额",quoteItemValue: downPayment});
+        //贷款金额
+        var loanPayment = price - downPayment;
+        Ext.getCmp("quoteloan").setData({quoteItemTitle: "贷款金额",quoteItemValue: loanPayment});
+        //贷款期限
+        var nper = HLSCalculator.utils.Data.getNper();
+        Ext.getCmp("quotenper").setData({quoteItemTitle: "贷款期限",quoteItemValue: nper});
+        //月供
+        var monthlyPayment = HLSCalculator.utils.Data.getMonthlyPayment();
+        Ext.getCmp("quotemonthlypayment").setData({quoteItemTitle: "月供",quoteItemValue: monthlyPayment});
+
+
+        //Ext.Msg.alert();
+    },
     syncFn: function(){
         var json;
 
         //financialPlanData.json
-         Ext.Ajax.request({
-            url: 'financialPlanData.json',
-             success : function(response){
-                 var text = response.responseText;
-                 alert(text);
-
-             },
-             failure : function(response){
-
-             }
-
-
-         });
+        // Ext.Ajax.request({
+        //    url: 'financialPlanData.json',
+        //     success : function(response){
+        //         var text = response.responseText;
+        //         alert(text);
+        //
+        //     },
+        //     failure : function(response){
+        //
+        //     }
+        //
+        //
+        // });
 
 
         Ext.Ajax.request({

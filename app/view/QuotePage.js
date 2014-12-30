@@ -12,53 +12,60 @@ Ext.define('HLSCalculator.view.QuotePage',{
             cls: 'header'
         },{
             xtype: 'xquoteitem',
+            id: 'quotetype',
             data: {
                 quoteItemTitle: '车型',
                 quoteItemValue: '2014款GLK200标准型'
             }
         },{
             xtype: 'xquoteitem',
+            id: 'quoteplan',
             data: {
                 quoteItemTitle: '产品',
-                quoteItemValue: '标准信贷'
+                quoteItemValue: ''
             }
         },{
             xtype: 'xquoteitem',
+            id: 'quoteprice',
             data: {
                 quoteItemTitle: '车价',
-                quoteItemValue: '¥268,800.00'
+                quoteItemValue: ''
             }
         },{
             xtype: 'xquoteitem',
+            id: 'quotedownpaymentratio',
             data: {
                 quoteItemTitle: '首付比例',
-                quoteItemValue: '20%'
+                quoteItemValue: ''
             }
         },{
             xtype: 'xquoteitem',
+            id: 'quotedownpayment',
             data: {
                 quoteItemTitle: '首付金额',
-                quoteItemValue: '¥53,760.00'
+                quoteItemValue: ''
             }
         },{
             xtype: 'xquoteitem',
+            id: 'quoteloan',
             data: {
                 quoteItemTitle: '贷款金额',
-                quoteItemValue: '¥215,040.00'
+                quoteItemValue: ''
             }
         },{
             xtype: 'xquoteitem',
+            id: 'quotenper',
             data: {
                 quoteItemTitle: '贷款期限',
-                quoteItemValue: '12'
+                quoteItemValue: ''
             }
         },{
             xtype: 'xquoteitem',
+            id: 'quotemonthlypayment',
             data: {
                 quoteItemTitle: '月供',
-                quoteItemValue: '¥17920.00'
-            },
-            id: 'specialItem'
+                quoteItemValue: ''
+            }
         },{
             xtype: 'label',
             html: '* 详情请洽当地经销商',

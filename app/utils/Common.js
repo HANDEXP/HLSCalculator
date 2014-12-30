@@ -36,7 +36,7 @@ Ext.define('HLSCalculator.utils.Common',{
         format4payment: function(payment){
             return (Math.round(payment * 10000)/100).toFixed(2) + '%'
         },
-        calculate : function PMT(p_rate,p_nper,p_pv,p_fv,p_type)
+        calculate : function(p_rate,p_nper,p_pv,p_fv,p_type)
         {
             var pmt, r,R1, n,pv,fv,ct;
 

@@ -5880,7 +5880,7 @@ div.quoteItemValue {
     clear: both
 }
 
-#specialItem .quoteItems .quoteItemTitle, #specialItem .quoteItems .quoteItemValue {
+#quotemonthlypayment .quoteItems .quoteItemTitle, #quotemonthlypayment .quoteItems .quoteItemValue {
     color: #f59231 !important;
 
 }
