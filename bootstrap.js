@@ -641,6 +641,7 @@ Ext.ClassManager.addNameAlternateMappings({
   ],
   "HLSCalculator.controller.StorageController": [],
   "HLSCalculator.model.Brand": [],
+  "HLSCalculator.model.FinalcialPlan": [],
   "HLSCalculator.model.Pic": [],
   "HLSCalculator.model.Series": [],
   "HLSCalculator.model.Type": [],
@@ -652,9 +653,12 @@ Ext.ClassManager.addNameAlternateMappings({
   "HLSCalculator.utils.Common": [],
   "HLSCalculator.utils.Data": [],
   "HLSCalculator.utils.Template": [],
+  "HLSCalculator.view.FinancialCard": [],
   "HLSCalculator.view.FinancialPlan": [],
+  "HLSCalculator.view.FinancialPlanItem": [],
   "HLSCalculator.view.FinancialPlanItem1": [],
   "HLSCalculator.view.FinancialPlanItem2": [],
+  "HLSCalculator.view.FinancialPlanList": [],
   "HLSCalculator.view.HeaderCmp": [],
   "HLSCalculator.view.LoanCalcPage": [],
   "HLSCalculator.view.Main": [],
@@ -1383,6 +1387,7 @@ Ext.ClassManager.addNameAliasMappings({
   "Ext.viewport.WindowsPhone": [],
   "HLSCalculator.controller.StorageController": [],
   "HLSCalculator.model.Brand": [],
+  "HLSCalculator.model.FinalcialPlan": [],
   "HLSCalculator.model.Pic": [],
   "HLSCalculator.model.Series": [],
   "HLSCalculator.model.Type": [],
@@ -1404,14 +1409,23 @@ Ext.ClassManager.addNameAliasMappings({
   "HLSCalculator.utils.Common": [],
   "HLSCalculator.utils.Data": [],
   "HLSCalculator.utils.Template": [],
+  "HLSCalculator.view.FinancialCard": [
+    "widget.financialcard"
+  ],
   "HLSCalculator.view.FinancialPlan": [
     "widget.financialplan"
+  ],
+  "HLSCalculator.view.FinancialPlanItem": [
+    "widget.financialplanitem"
   ],
   "HLSCalculator.view.FinancialPlanItem1": [
     "widget.financialplanitem1"
   ],
   "HLSCalculator.view.FinancialPlanItem2": [
     "widget.financialplanitem2"
+  ],
+  "HLSCalculator.view.FinancialPlanList": [
+    "widget.financialplanlist"
   ],
   "HLSCalculator.view.HeaderCmp": [
     "widget.xheader"

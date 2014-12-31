@@ -8,31 +8,36 @@ Ext.define('HLSCalculator.controller.StorageController', {
         stores: ['BrandStore','SeriesStore','TypeStore'],
         refs: {
             selectautopage: 'selectautopage',
-            main: 'main'
+            main: 'main',
+            quotepage: 'quotepage'
         },
         control: {
             selectautopage: {
                 initialize: 'onSelectPageActivate'
             },
             main: {
-                activeitemchange: 'onItemActivate'
+                //activeitemchange: 'onItemActivate'
+            },
+            quotepage: {
+                show: 'onQuotePageActive'
             }
+
         }
     },
     onSelectPageActivate: function() {
         this.syncFn();
     },
-    onItemActivate: function(newActiveItem, that, oldActiveItem, eOpts){
+    onItemActivate: function(that, eOpts){
         //debugger;
         switch (that.title){
             case '报价':
-                this.onQuotePageActive();
+                this.onQuotePageActive(that, eOpts);
                 break;
             default :
                 break;
         }
     },
-    onQuotePageActive: function() {
+    onQuotePageActive: function(that, eOpts) {
         //车型
         var type = [HLSCalculator.utils.Data.getBrand(), HLSCalculator.utils.Data.getType()].join(' ');
         Ext.getCmp("quotetype").setData({quoteItemTitle: "车型",quoteItemValue: type});
@@ -81,7 +86,7 @@ Ext.define('HLSCalculator.controller.StorageController', {
 
 
         Ext.Ajax.request({
-            url: 'data.json',
+            url: 'http://m.hand-china.com/dev/data.json',
             success: function(response){
                 var text = response.responseText;
                 json = eval("("+text+")");

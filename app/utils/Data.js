@@ -16,13 +16,13 @@ Ext.define('HLSCalculator.utils.Data',{
         period: '',
         monthlyPayment: '',
         //金融方案
-        "downPaymentRatio": "20%",
+        "downPaymentRatio": "",
         "annualRate": "13%",
-        "annualPayItems": "12",
-        "nper": "24",
+        "annualPayItems": "",
+        "nper": "",
         "fvRation": "10%",
-        "payTypeRatio": "0%",
-        "planName": "标准信贷"
+        "payTypeRatio": "",
+        "planName": ""
 
     },
     constructor: function(config) {

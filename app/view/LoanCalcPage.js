@@ -20,6 +20,7 @@ Ext.define('HLSCalculator.view.LoanCalcPage', {
                     //store: 'teststore'
                 }, {
                     xtype: 'selectfield',
+                    id: 'planCmp',
                     label: '',
                     options: [
                         {text: '标准信贷', value: 'first'},
@@ -113,20 +114,22 @@ Ext.define('HLSCalculator.view.LoanCalcPage', {
             style: 'margin: 1.5em 3.5em 0 3.5em;',
             listeners: {
                 tap: function (that, e, eOpts) {
+                    var planName = Ext.getCmp("planCmp")._value.data.text;
                     var downPaymentRatio = Ext.getCmp("downPercentageCmp")._value;
                     var downPayment = Ext.getCmp("downPaymentCmp")._value;
-                    var nper = Ext.getCmp("nperCmp")._value;
-                    if (downPaymentRatio != '' || downPayment != '' || nperCmp != '') {
+                    var nper = parseInt(Ext.getCmp("nperCmp")._value);
+                    if (downPaymentRatio != '' && downPayment != '' && nper != '') {
                         var rate = parseFloat(HLSCalculator.utils.Data.getAnnualRate())/100;
                         var pv = parseInt(HLSCalculator.utils.Data.getPrice()) - parseInt(downPayment);
                         var fv = pv * parseFloat(HLSCalculator.utils.Data.getFvRation()) / 100
                         var monthlyPayment = HLSCalculator.utils.Common.calculate(rate, nper, pv, fv, 0);
                         console.log(monthlyPayment);
+                        HLSCalculator.utils.Data.setPlanName(planName);
+                        HLSCalculator.utils.Data.setDownPaymentRatio(downPaymentRatio)
                         HLSCalculator.utils.Data.setDownPayment(downPayment);
-
                         HLSCalculator.utils.Data.setNper(nper);
                         HLSCalculator.utils.Data.setMonthlyPayment(monthlyPayment);
-
+                        alert(monthlyPayment);
 
                     }
                 }
