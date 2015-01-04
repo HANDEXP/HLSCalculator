@@ -8,15 +8,11 @@ Ext.define('HLSCalculator.controller.StorageController', {
         stores: ['BrandStore','SeriesStore','TypeStore'],
         refs: {
             selectautopage: 'selectautopage',
-            main: 'main',
             quotepage: 'quotepage'
         },
         control: {
             selectautopage: {
                 initialize: 'onSelectPageActivate'
-            },
-            main: {
-                //activeitemchange: 'onItemActivate'
             },
             quotepage: {
                 show: 'onQuotePageActive'
@@ -88,7 +84,12 @@ Ext.define('HLSCalculator.controller.StorageController', {
         Ext.Ajax.request({
             url: 'http://m.hand-china.com/dev/data.json',
             success: function(response){
-                var text = response.responseText;
+                var text,
+                    brandstore,
+                    seriesstore,
+                    typestore,
+                    picstore;
+                text = response.responseText;
                 json = eval("("+text+")");
                 // process server response here
                 //清空旧数据
@@ -96,7 +97,7 @@ Ext.define('HLSCalculator.controller.StorageController', {
                 Ext.getStore('seriesstore').removeAll();
                 Ext.getStore('typestore').removeAll();
                 //本地化存brandstore
-                var brandstore = Ext.getStore('brandstore');
+                brandstore = Ext.getStore('brandstore');
                 brandstore.removeAll();
                 for(var i = 0;i < json.brands.length; i++){
                     brandstore.add(json.brands[i]);
@@ -104,7 +105,7 @@ Ext.define('HLSCalculator.controller.StorageController', {
                 brandstore.sync();
 
                 //本地化存seriesstore
-                var seriesstore = Ext.getStore('seriesstore');
+                seriesstore = Ext.getStore('seriesstore');
                 seriesstore.removeAll();
                 for(var i =0;i < json.series.length; i++){
                     seriesstore.add(json.series[i]);
@@ -113,16 +114,15 @@ Ext.define('HLSCalculator.controller.StorageController', {
                 seriesstore.sync();
 
                 //本地化存typesstore
-                var typestore = Ext.getStore('typestore');
+                typestore = Ext.getStore('typestore');
                 typestore.removeAll();
                 for(var i = 0;i < json.types.length; i++){
                     typestore.add(json.types[i]);
                 }
                 //debugger;
                 typestore.sync();
-
                 //本地化存储图片
-                var picstore = Ext.getStore('picstore');
+                picstore = Ext.getStore('picstore');
                 picstore.removeAll();
                 for(var i = 0;i < json.pics.length; i++){
                     picstore.add(json.pics[i]);
@@ -139,11 +139,6 @@ Ext.define('HLSCalculator.controller.StorageController', {
     init: function () {
         console.log("onLine: "+ navigator.onLine);
 
-        //if(navigator.onLine){
-        //    this.syncTap()
-        //}else{
-        //
-        //}
     }
 });
 

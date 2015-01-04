@@ -22,7 +22,8 @@ Ext.define('HLSCalculator.view.SelectAutoPage', {
                     store: 'brandstore',
                     listeners: {
                         change: function (selectfield, newValue, oldValue, eOpts) {
-                            var store = Ext.getStore('seriesstore');
+                            var store = Ext.getStore('seriesstore'),
+                                isValid = HLSCalculator.utils.Common.isValid;
                             store.setFilters({
                                 property: "brand_id",
                                 value: new RegExp("1|" + selectfield._value.data.brand_id)
@@ -30,7 +31,7 @@ Ext.define('HLSCalculator.view.SelectAutoPage', {
                             store.load();
                             var cmp = Ext.getCmp('seriesSelectFieldCmp');
                             cmp.setStore(store);
-                            if (HLSCalculator.utils.Common.isValid(selectfield._value.data.text)) {
+                            if (isValid(selectfield._value.data.text)) {
                                 HLSCalculator.utils.Data.setBrand(selectfield._value.data.text)
                             }
                         }
@@ -64,24 +65,28 @@ Ext.define('HLSCalculator.view.SelectAutoPage', {
                             if(oldValue == null){
                                 return;
                             }
-                            var imageCmp = Ext.getCmp('imageCmp');
-                            var seriesValue = Ext.getCmp('seriesSelectFieldCmp').getValue();
+                            var imageCmp,
+                                seriesValue,
+                                base64,
+                                string,
+                                isValid = HLSCalculator.utils.Common.isValid;
+                            imageCmp = Ext.getCmp('imageCmp');
+                            seriesValue = Ext.getCmp('seriesSelectFieldCmp').getValue();
                             //换图片
                             //seriesValue == 'default' ? null : imageCmp.setSrc('resources/images/' + seriesValue.split('-')[1].toUpperCase() + '.jpg')
-                            var base64 =  Ext.getStore('picstore').findRecord('pic_id',selectfield._value.data.pic_id).data.base64;
+                            base64 =  Ext.getStore('picstore').findRecord('pic_id',selectfield._value.data.pic_id).data.base64;
                             imageCmp.setSrc(base64);
                             //显示报价和车型号
                             selectfield._value.data.price == '' ? Ext.getCmp('priceLabelCmp').setHtml('厂商指导价：暂无') : Ext.getCmp('priceLabelCmp').setHtml("厂商指导价：" + '¥ ' + HLSCalculator.utils.Common.format4price(selectfield._value.data.price));
                             selectfield._value.data.value == 'default' ? Ext.getCmp('typeLabelCmp').setHtml('请选择车系和车型') : Ext.getCmp('typeLabelCmp').setHtml([Ext.getCmp('brandSelectFieldCmp')._value.data.text, selectfield._value.data.text].join(' '));
-
                             //存入信息
-                            HLSCalculator.utils.Data.setSeries(selectfield._value.data.series);
+                            HLSCalculator.utils.Data.setSeries(selectfield._value.data.series_id);
                             HLSCalculator.utils.Data.setType(selectfield._value.data.text);
                             HLSCalculator.utils.Data.setPrice(selectfield._value.data.price);
-                            var string = [HLSCalculator.utils.Data.getBrand(), HLSCalculator.utils.Data.getType()].join(' ');
+                            string = [HLSCalculator.utils.Data.getBrand(), HLSCalculator.utils.Data.getType()].join(' ');
                             //带出车型和厂商指导价
                             Ext.getCmp('guidingPriceCmp').setValue(HLSCalculator.utils.Common.format4price(HLSCalculator.utils.Data.getPrice()));
-                            if(HLSCalculator.utils.Common.isValid(HLSCalculator.utils.Data.getPrice())){
+                            if(isValid(HLSCalculator.utils.Data.getPrice())){
                                 Ext.getCmp('autoTypeCmp').setValue(string);
                                 Ext.Function.createDelayed(
                                     function(){

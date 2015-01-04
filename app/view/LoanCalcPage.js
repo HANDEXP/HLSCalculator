@@ -43,15 +43,17 @@ Ext.define('HLSCalculator.view.LoanCalcPage', {
                     labelCls: 'calc-item',
                     listeners: {
                         blur: function (that, e, eOpts) {
-                            var newValue = that.getValue();
-                            if (!HLSCalculator.utils.Common.isValid(newValue)) {
+                            var newValue = that.getValue(),
+                                isValid = HLSCalculator.utils.Common.isValid,
+                                getPrice = HLSCalculator.utils.Data.getPrice();
+                            if (!isValid(newValue)) {
                                 return;
                             }
                             if (parseFloat(newValue) > 1 && newValue.charAt(newValue.length - 1) != '%'){
                                 Ext.Msg.alert('错误', '   首付款比例必须是小数或者百分数。     ', Ext.emptyFn)
                                 return;
                             }
-                            var downPayment = parseFloat(HLSCalculator.utils.Data.getPrice()) * (parseFloat(newValue) > 1 || newValue.charAt(newValue.length - 1) == '%' ? parseFloat(newValue) / 100 : parseFloat(newValue));
+                            var downPayment = parseFloat(getPrice) * (parseFloat(newValue) > 1 || newValue.charAt(newValue.length - 1) == '%' ? parseFloat(newValue) / 100 : parseFloat(newValue));
                             console.log(downPayment);
                             Ext.getCmp('downPaymentCmp').setValue(downPayment);
 
@@ -67,11 +69,16 @@ Ext.define('HLSCalculator.view.LoanCalcPage', {
                     component: {xtype: 'input', type: 'number', fastFocus: true},
                     listeners: {
                         blur: function (that, e, eOpts) {
-                            var newValue = that.getValue();
-                            if (!HLSCalculator.utils.Common.isValid(newValue)) {
+                            var newValue,
+                                downPercentageValue,
+                                isValid = HLSCalculator.utils.Common.isValid,
+                                getPrice = HLSCalculator.utils.Data.getPrice(),
+                                format4payment = HLSCalculator.utils.Common.format4payment;
+                            newValue = that.getValue();
+                            if (!isValid(newValue)) {
                                 return;
                             }
-                            var downPercentageValue = newValue / HLSCalculator.utils.Data.getPrice();
+                            downPercentageValue = newValue / getPrice;
                             if (!isFinite(downPercentageValue)) {
                                 Ext.toast(
                                     {
@@ -88,11 +95,11 @@ Ext.define('HLSCalculator.view.LoanCalcPage', {
                             }
                             if (downPercentageValue > 1) {
                                 Ext.toast('首付金额超过购车全款。');
-                                newValue = parseInt(HLSCalculator.utils.Data.getPrice());
+                                newValue = parseInt(getPrice);
                                 downPercentageValue = 1;
                             }
                             //设置按首付款比例
-                            Ext.getCmp('downPercentageCmp').setValue(HLSCalculator.utils.Common.format4payment(downPercentageValue));
+                            Ext.getCmp('downPercentageCmp').setValue(format4payment(downPercentageValue));
                             //设置按首付款金额
                             that.setValue(newValue);
                         }
@@ -114,22 +121,24 @@ Ext.define('HLSCalculator.view.LoanCalcPage', {
             style: 'margin: 1.5em 3.5em 0 3.5em;',
             listeners: {
                 tap: function (that, e, eOpts) {
-                    var planName = Ext.getCmp("planCmp")._value.data.text;
-                    var downPaymentRatio = Ext.getCmp("downPercentageCmp")._value;
-                    var downPayment = Ext.getCmp("downPaymentCmp")._value;
-                    var nper = parseInt(Ext.getCmp("nperCmp")._value);
+                    var planName = Ext.getCmp("planCmp")._value.data.text,
+                        downPaymentRatio = Ext.getCmp("downPercentageCmp")._value,
+                        downPayment = Ext.getCmp("downPaymentCmp")._value,
+                        nper = parseInt(Ext.getCmp("nperCmp")._value),
+                        price = parseInt(HLSCalculator.utils.Data.getPrice());
+                        calculate = HLSCalculator.utils.Common.calculate;
                     if (downPaymentRatio != '' && downPayment != '' && nper != '') {
                         var rate = parseFloat(HLSCalculator.utils.Data.getAnnualRate())/100;
-                        var pv = parseInt(HLSCalculator.utils.Data.getPrice()) - parseInt(downPayment);
-                        var fv = pv * parseFloat(HLSCalculator.utils.Data.getFvRation()) / 100
-                        var monthlyPayment = HLSCalculator.utils.Common.calculate(rate, nper, pv, fv, 0);
+                        var pv = parseInt(downPayment) - parseInt(price);
+                        var fv = price * parseFloat(HLSCalculator.utils.Data.getFvRation()) / 100
+                        var monthlyPayment = calculate(rate, nper, pv, fv, 0);
                         console.log(monthlyPayment);
                         HLSCalculator.utils.Data.setPlanName(planName);
                         HLSCalculator.utils.Data.setDownPaymentRatio(downPaymentRatio)
                         HLSCalculator.utils.Data.setDownPayment(downPayment);
                         HLSCalculator.utils.Data.setNper(nper);
                         HLSCalculator.utils.Data.setMonthlyPayment(monthlyPayment);
-                        alert(monthlyPayment);
+                        //alert(monthlyPayment);
 
                     }
                 }
