@@ -21,9 +21,8 @@ Ext.define('HLSCalculator.utils.Data',{
         "annualPayItems": "",
         "nper": "",
         "fvRation": "10%",
-
         "payTypeRatio": "",
-        "planName": ""
+        "planName": "请先选择金融方案"
 
     },
     constructor: function(config) {

@@ -5788,6 +5788,9 @@ div.header {
 }
 
 /* 默认样式 */
+body {
+    font-size: 100% !important;
+}
 div.quoteItems {
     width: 100%;
     margin: 3.5% 0 3.5% 0;
@@ -5796,7 +5799,7 @@ div.quoteItems {
 
 div.quoteItemTitle, div.quoteItemLine, div.quoteItemValue {
     float: left;
-    font-size: 0.75em;
+    font-size: 0.7em;
 }
 
 div.quoteItemTitle {
@@ -5826,15 +5829,15 @@ div.quoteItemValue {
     color: #4d7381;
 }
 
-/* 媒体查询样式 */
-@media screen and (min-device-height: 600px) {
+/* 媒体查询样式 ip5*/
+@media screen and (min-device-height: 550px) {
     body {
-        font-size: 120% !important;
+        font-size: 110% !important;
     }
 
     div.quoteItems {
         width: 100%;
-        margin: 8% 0 8% 0;
+        margin: 6% 0 6% 0;
         display: block;
     }
 
@@ -5865,6 +5868,50 @@ div.quoteItemValue {
 
     div.quoteItemValue {
         width: 47%;
+        text-align: left;
+        color: #4d7381;
+    }
+}
+
+/* 媒体查询样式 ip6*/
+@media screen and (min-device-height: 600px) {
+    body {
+        font-size: 135% !important;
+    }
+
+    div.quoteItems {
+        width: 100%;
+        margin: 8% 0 8% 0;
+        display: block;
+    }
+
+    div.quoteItemTitle, div.quoteItemLine, div.quoteItemValue {
+        float: left;
+        /*font-size: 0.8em;*/
+    }
+
+    div.quoteItemTitle {
+        width: 24%;
+        text-align: right;
+    }
+
+    div.quoteItemLine {
+        background: #ccd9dc;
+        width: 20%;
+        height: 3px;
+        margin: 0.5em 3% 0.5em 3%;
+    }
+
+    .quoteLabel {
+        bottom: 5px;
+        position: absolute;
+        /*font-size: 1em;*/
+        color: #4d7381;
+        left: 2em;
+    }
+
+    div.quoteItemValue {
+        width: 50%;
         text-align: left;
         color: #4d7381;
     }

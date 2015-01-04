@@ -85,7 +85,7 @@ Ext.define('HLSCalculator.view.SelectAutoPage', {
                             HLSCalculator.utils.Data.setPrice(selectfield._value.data.price);
                             string = [HLSCalculator.utils.Data.getBrand(), HLSCalculator.utils.Data.getType()].join(' ');
                             //带出车型和厂商指导价
-                            Ext.getCmp('guidingPriceCmp').setValue(HLSCalculator.utils.Common.format4price(HLSCalculator.utils.Data.getPrice()));
+
                             if(isValid(HLSCalculator.utils.Data.getPrice())){
                                 Ext.getCmp('autoTypeCmp').setValue(string);
                                 Ext.Function.createDelayed(

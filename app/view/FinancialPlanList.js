@@ -30,6 +30,7 @@ Ext.define('HLSCalculator.view.FinancialPlanList', {
                 HLSCalculator.utils.Data.setFvRation(data.raw.fv_ratio);
                 HLSCalculator.utils.Data.setPayTypeRatio(data.raw.pay_type_ratio);
                 HLSCalculator.utils.Data.setPlanName(data.raw.plan_name);
+                HLSCalculator.utils.Data.setNper(data.raw.nper);
 
 
 

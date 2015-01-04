@@ -8,7 +8,8 @@ Ext.define('HLSCalculator.controller.StorageController', {
         stores: ['BrandStore','SeriesStore','TypeStore'],
         refs: {
             selectautopage: 'selectautopage',
-            quotepage: 'quotepage'
+            quotepage: 'quotepage',
+            loancalcpage: 'loancalcpage'
         },
         control: {
             selectautopage: {
@@ -16,7 +17,11 @@ Ext.define('HLSCalculator.controller.StorageController', {
             },
             quotepage: {
                 show: 'onQuotePageActive'
+            },
+            loancalcpage: {
+                show: 'onLoanCalcPageActive'
             }
+
 
         }
     },
@@ -61,6 +66,27 @@ Ext.define('HLSCalculator.controller.StorageController', {
 
 
         //Ext.Msg.alert();
+    },
+    onLoanCalcPageActive: function(that,eOpts) {
+        var planName,
+            downPaymentRatio,
+            downPayment,
+            nper,
+            price;
+        planName = HLSCalculator.utils.Data.getPlanName();
+        downPaymentRatio = HLSCalculator.utils.Data.getDownPaymentRatio();
+        nper = HLSCalculator.utils.Data.getNper();
+        price = HLSCalculator.utils.Data.getPrice();
+        downPayment = parseFloat(price) * (parseFloat(downPaymentRatio) > 1 || downPaymentRatio.charAt(downPaymentRatio.length - 1) == '%' ? parseFloat(downPaymentRatio) / 100 : parseFloat(downPaymentRatio));
+        if(planName == "请先选择金融方案" || downPaymentRatio == "" || nper == ""){
+            Ext.Msg.alert('', '   请先选择金融方案。     ', Ext.emptyFn);
+        }
+        Ext.getCmp("planCmp").setValue(planName);
+        Ext.getCmp("downPercentageCmp").setValue(downPaymentRatio);
+        Ext.getCmp("downPaymentCmp").setValue(downPayment);
+        Ext.getCmp("nperCmp").setValue(nper);
+        Ext.getCmp('guidingPriceCmp').setValue(HLSCalculator.utils.Common.format4price(price));
+        //debugger;
     },
     syncFn: function(){
         var json;

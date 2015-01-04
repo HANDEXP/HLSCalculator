@@ -19,14 +19,9 @@ Ext.define('HLSCalculator.view.LoanCalcPage', {
                     //value: HLSCalculator.utils.Data.getType();
                     //store: 'teststore'
                 }, {
-                    xtype: 'selectfield',
+                    xtype: 'textfield',
                     id: 'planCmp',
-                    label: '',
-                    options: [
-                        {text: '标准信贷', value: 'first'},
-                        {text: 'Second Option', value: 'second'},
-                        {text: 'Third Option', value: 'third'}
-                    ]
+                    value: '请先选择金融方案'
                 }, {
                     xtype: 'textfield',
                     id: 'guidingPriceCmp',
@@ -121,7 +116,7 @@ Ext.define('HLSCalculator.view.LoanCalcPage', {
             style: 'margin: 1.5em 3.5em 0 3.5em;',
             listeners: {
                 tap: function (that, e, eOpts) {
-                    var planName = Ext.getCmp("planCmp")._value.data.text,
+                    var planName = Ext.getCmp("planCmp")._value,
                         downPaymentRatio = Ext.getCmp("downPercentageCmp")._value,
                         downPayment = Ext.getCmp("downPaymentCmp")._value,
                         nper = parseInt(Ext.getCmp("nperCmp")._value),
