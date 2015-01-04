@@ -5874,14 +5874,14 @@ div.quoteItemValue {
 }
 
 /* 媒体查询样式 ip6*/
-@media screen and (min-device-height: 600px) {
+@media screen and (min-device-height: 635px) {
     body {
         font-size: 135% !important;
     }
 
     div.quoteItems {
         width: 100%;
-        margin: 8% 0 8% 0;
+        margin: 7% 0 7% 0;
         display: block;
     }
 

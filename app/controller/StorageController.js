@@ -94,15 +94,15 @@ Ext.define('HLSCalculator.controller.StorageController', {
         //financialPlanData.json
 
          Ext.Ajax.request({
-            url: 'financialPlanData.json',
+            url: 'http://m.hand-china.com/dev/financialPlanData.json',
              success : function(response){
                  var text = response.responseText;
                  json = eval("("+text+")");
                  var finalcialStroe = Ext.getStore('financialplanstore');
                  finalcialStroe.removeAll();
 
-                 for(var i=0;i< json.length;i++){
-                     finalcialStroe.add(json[i]);
+                 for(var i=0;i< json.financialPlan.length;i++){
+                     finalcialStroe.add(json.financialPlan[i]);
 
                  }
                  finalcialStroe.sync();

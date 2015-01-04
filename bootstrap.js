@@ -654,10 +654,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "HLSCalculator.utils.Data": [],
   "HLSCalculator.utils.Template": [],
   "HLSCalculator.view.FinancialCard": [],
-  "HLSCalculator.view.FinancialPlan": [],
   "HLSCalculator.view.FinancialPlanItem": [],
-  "HLSCalculator.view.FinancialPlanItem1": [],
-  "HLSCalculator.view.FinancialPlanItem2": [],
   "HLSCalculator.view.FinancialPlanList": [],
   "HLSCalculator.view.HeaderCmp": [],
   "HLSCalculator.view.LoanCalcPage": [],
@@ -1412,17 +1409,8 @@ Ext.ClassManager.addNameAliasMappings({
   "HLSCalculator.view.FinancialCard": [
     "widget.financialcard"
   ],
-  "HLSCalculator.view.FinancialPlan": [
-    "widget.financialplan"
-  ],
   "HLSCalculator.view.FinancialPlanItem": [
     "widget.financialplanitem"
-  ],
-  "HLSCalculator.view.FinancialPlanItem1": [
-    "widget.financialplanitem1"
-  ],
-  "HLSCalculator.view.FinancialPlanItem2": [
-    "widget.financialplanitem2"
   ],
   "HLSCalculator.view.FinancialPlanList": [
     "widget.financialplanlist"
