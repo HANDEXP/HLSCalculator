@@ -21,6 +21,7 @@ Ext.define('HLSCalculator.utils.Data',{
         "annualPayItems": "",
         "nper": "",
         "fvRation": "10%",
+
         "payTypeRatio": "",
         "planName": ""
 

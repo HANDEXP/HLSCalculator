@@ -66,19 +66,28 @@ Ext.define('HLSCalculator.controller.StorageController', {
         var json;
 
         //financialPlanData.json
-        // Ext.Ajax.request({
-        //    url: 'financialPlanData.json',
-        //     success : function(response){
-        //         var text = response.responseText;
-        //         alert(text);
-        //
-        //     },
-        //     failure : function(response){
-        //
-        //     }
-        //
-        //
-        // });
+
+         Ext.Ajax.request({
+            url: 'financialPlanData.json',
+             success : function(response){
+                 var text = response.responseText;
+                 json = eval("("+text+")");
+                 var finalcialStroe = Ext.getStore('financialplanstore');
+                 finalcialStroe.removeAll();
+
+                 for(var i=0;i< json.length;i++){
+                     finalcialStroe.add(json[i]);
+
+                 }
+                 finalcialStroe.sync();
+
+             },
+             failure : function(response){
+
+             }
+
+
+         });
 
 
         Ext.Ajax.request({
