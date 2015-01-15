@@ -11,6 +11,7 @@ Ext.define('HLSCalculator.view.Main', {
     ],
     config: {
         tabBarPosition: 'bottom',
+
         items: [
             {
                 title: '选购车型',
@@ -36,6 +37,11 @@ Ext.define('HLSCalculator.view.Main', {
 
 
 
-        ]
+        ],
+        listeners: {
+            activate: function( newActiveItem, that, oldActiveItem, eOpts ){
+                //debugger;
+            }
+        }
     }
 });

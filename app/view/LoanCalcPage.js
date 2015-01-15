@@ -5,6 +5,7 @@ Ext.define('HLSCalculator.view.LoanCalcPage', {
     extend: 'Ext.Container',
     xtype: 'loancalcpage',
     config: {
+        id: 'loancalcpage',
         items: [{
             xtype: 'fieldset',
             style: 'margin: .5em .5em .5em;',
@@ -111,11 +112,24 @@ Ext.define('HLSCalculator.view.LoanCalcPage', {
             ]
         }, {
             xtype: 'button',
+            pressedCls: 'x-calc-button-pressing',
             text: '计算',
-            ui: 'action',
-            style: 'margin: 1.5em 3.5em 0 3.5em;',
+            id: 'testt',
+            ui: '',
+            //style: {
+            //    'margin': '1.5em 0.6em 0px',
+            //    'background': '#ffffff',
+            //    'color': '#1985D0',
+            //    'border': '1px solid #1985D0',
+            //    'border-radius': '.2em',
+            //    'font-size': '.9em',
+            //    'padding': '.5em 0',
+            //    '-webkit-tap-highlight-color': '#1985D0'
+            //},
+            cls: 'x-calc-button',
             listeners: {
                 tap: function (that, e, eOpts) {
+
                     var planName = Ext.getCmp("planCmp")._value,
                         downPaymentRatio = Ext.getCmp("downPercentageCmp")._value,
                         downPayment = Ext.getCmp("downPaymentCmp")._value,

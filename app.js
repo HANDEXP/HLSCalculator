@@ -73,6 +73,7 @@ Ext.application({
 
     launch: function () {
         // Destroy the #appLoadingIndicator element
+
         Ext.fly('appLoadingIndicator').destroy();
         //localStorage.clear();
         //localStorage.setItem("jsonData",Ext.JSON.encode(json));
@@ -81,27 +82,34 @@ Ext.application({
         Ext.Viewport.add({
             xtype: 'titlebar',
             docked: 'top',
+            style: 'background-color: #1986D0;background-image: none;min-height: inherit;font-size: 0.9em;',
             title: '',
+            id: 'titleBarCmp',
             items: [
                 {
-                    iconCls: 'home',
+                    text: '后退',
+                    style: 'border: 0px;background-image: none;background-color: #1986D0;',
                     align: 'left',
                     listeners : {
-                        tap : function()
+                        tap : function(that, e, eOpts)
                         {
+                            if(that.getId() !== "ext-button-1"){
+                                return;
+                            }
                             var mainCmp = Ext.getCmp('mainCmp');
-                            var title = mainCmp.getActiveItem().title
-                            if(title ==  '金融方案'){
+                            var id = mainCmp.getActiveItem().getId();
+                            //alert(id);
+                            if(id ==  'financialcard'){
                                 ////2
                                 mainCmp.setActiveItem(0);
                             }
 
-                            if(title ==  '贷款计算器'){
+                            if(id ==  'loancalcpage'){
                                 //////3
                                 mainCmp.setActiveItem(1);
                             }
 
-                            if(title == '报价'){
+                            if(id == 'quotepage'){
                                 //////4
                                 mainCmp.setActiveItem(2);
 

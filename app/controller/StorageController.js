@@ -8,12 +8,17 @@ Ext.define('HLSCalculator.controller.StorageController', {
         stores: ['BrandStore','SeriesStore','TypeStore'],
         refs: {
             selectautopage: 'selectautopage',
+            financialcard: 'financialcard',
             quotepage: 'quotepage',
             loancalcpage: 'loancalcpage'
         },
         control: {
             selectautopage: {
-                initialize: 'onSelectPageActivate'
+                initialize: 'onSelectPageInit',
+                show: 'onSelectPageActive'
+            },
+            financialcard: {
+                show: 'onFinancialCardActive'
             },
             quotepage: {
                 show: 'onQuotePageActive'
@@ -25,7 +30,7 @@ Ext.define('HLSCalculator.controller.StorageController', {
 
         }
     },
-    onSelectPageActivate: function() {
+    onSelectPageInit: function() {
         this.syncFn();
     },
     onItemActivate: function(that, eOpts){
@@ -38,7 +43,14 @@ Ext.define('HLSCalculator.controller.StorageController', {
                 break;
         }
     },
+    onFinancialCardActive: function(that, eOpts){
+        Ext.getCmp('titleBarCmp').setTitle('金融方案');
+    },
+    onSelectPageActive: function(that, eOpts){
+        Ext.getCmp('titleBarCmp').setTitle('选购车型');
+    },
     onQuotePageActive: function(that, eOpts) {
+        Ext.getCmp('titleBarCmp').setTitle('报价');
         //车型
         var type = [HLSCalculator.utils.Data.getBrand(), HLSCalculator.utils.Data.getType()].join(' ');
         Ext.getCmp("quotetype").setData({quoteItemTitle: "车型",quoteItemValue: type});
@@ -87,6 +99,7 @@ Ext.define('HLSCalculator.controller.StorageController', {
         Ext.getCmp("nperCmp").setValue(nper);
         Ext.getCmp('guidingPriceCmp').setValue(HLSCalculator.utils.Common.format4price(price));
         //debugger;
+        Ext.getCmp('titleBarCmp').setTitle('贷款计算器');
     },
     syncFn: function(){
 
@@ -97,7 +110,7 @@ Ext.define('HLSCalculator.controller.StorageController', {
              success : function(response){
                  var json;
                  var text = response.responseText;
-                 json = eval("("+text+")");
+                 json = JSON.parse(text);
                  var finalcialStroe = Ext.getStore('financialplanstore');
                  finalcialStroe.removeAll();
 
@@ -126,7 +139,7 @@ Ext.define('HLSCalculator.controller.StorageController', {
                     picstore,
                     json;
                 text = response.responseText;
-                json = eval("("+text+")");
+                json = JSON.parse(text);
                 // process server response here
                 //清空旧数据
                 Ext.getStore('brandstore').removeAll();

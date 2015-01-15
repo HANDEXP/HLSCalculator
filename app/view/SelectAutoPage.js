@@ -5,6 +5,7 @@ Ext.define('HLSCalculator.view.SelectAutoPage', {
     extend: 'Ext.Container',
     xtype: 'selectautopage',
     config: {
+        id: 'selectautopage',
         items: [{
             xtype: 'fieldset',
             style: 'margin: .5em .5em .5em;',

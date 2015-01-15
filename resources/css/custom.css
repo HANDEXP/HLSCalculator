@@ -3126,10 +3126,10 @@ body.x-desktop {
 .x-button.x-button-pressing, .x-button.x-button-pressing:after, .x-button.x-button-pressed, .x-button.x-button-pressed:after, .x-button.x-button-active, .x-button.x-button-active:after, .x-toolbar .x-button.x-button-pressing, .x-toolbar .x-button.x-button-pressing:after, .x-toolbar .x-button.x-button-pressed, .x-toolbar .x-button.x-button-pressed:after, .x-toolbar .x-button.x-button-active, .x-toolbar .x-button.x-button-active:after {
     background-image: none;
     background-color: #c4c4c4;
-    background-image: -webkit-linear-gradient(top, #ababab, #b8b8b8 10%, #c4c4c4 65%, #c6c6c6);
-    background-image: -moz-linear-gradient(top, #ababab, #b8b8b8 10%, #c4c4c4 65%, #c6c6c6);
-    background-image: -o-linear-gradient(top, #ababab, #b8b8b8 10%, #c4c4c4 65%, #c6c6c6);
-    background-image: -ms-linear-gradient(top, #ababab, #b8b8b8 10%, #c4c4c4 65%, #c6c6c6)
+    /*background-image: -webkit-linear-gradient(top, #ababab, #b8b8b8 10%, #c4c4c4 65%, #c6c6c6);*/
+    /*background-image: -moz-linear-gradient(top, #ababab, #b8b8b8 10%, #c4c4c4 65%, #c6c6c6);*/
+    /*background-image: -o-linear-gradient(top, #ababab, #b8b8b8 10%, #c4c4c4 65%, #c6c6c6);*/
+    /*background-image: -ms-linear-gradient(top, #ababab, #b8b8b8 10%, #c4c4c4 65%, #c6c6c6)*/
 }
 
 .x-button .x-button-icon {
@@ -3685,10 +3685,10 @@ body.x-desktop {
 .x-button.x-button-action.x-button-pressing, .x-button.x-button-action.x-button-pressing:after, .x-button.x-button-action.x-button-pressed, .x-button.x-button-action.x-button-pressed:after, .x-button.x-button-action.x-button-active, .x-button.x-button-action.x-button-active:after, .x-toolbar .x-button.x-button-action.x-button-pressing, .x-toolbar .x-button.x-button-action.x-button-pressing:after, .x-toolbar .x-button.x-button-action.x-button-pressed, .x-toolbar .x-button.x-button-action.x-button-pressed:after, .x-toolbar .x-button.x-button-action.x-button-active, .x-toolbar .x-button.x-button-action.x-button-active:after, .x-button.x-button-action-round.x-button-pressing, .x-button.x-button-action-round.x-button-pressing:after, .x-button.x-button-action-round.x-button-pressed, .x-button.x-button-action-round.x-button-pressed:after, .x-button.x-button-action-round.x-button-active, .x-button.x-button-action-round.x-button-active:after, .x-toolbar .x-button.x-button-action-round.x-button-pressing, .x-toolbar .x-button.x-button-action-round.x-button-pressing:after, .x-toolbar .x-button.x-button-action-round.x-button-pressed, .x-toolbar .x-button.x-button-action-round.x-button-pressed:after, .x-toolbar .x-button.x-button-action-round.x-button-active, .x-toolbar .x-button.x-button-action-round.x-button-active:after, .x-button.x-button-action-small.x-button-pressing, .x-button.x-button-action-small.x-button-pressing:after, .x-button.x-button-action-small.x-button-pressed, .x-button.x-button-action-small.x-button-pressed:after, .x-button.x-button-action-small.x-button-active, .x-button.x-button-action-small.x-button-active:after, .x-toolbar .x-button.x-button-action-small.x-button-pressing, .x-toolbar .x-button.x-button-action-small.x-button-pressing:after, .x-toolbar .x-button.x-button-action-small.x-button-pressed, .x-toolbar .x-button.x-button-action-small.x-button-pressed:after, .x-toolbar .x-button.x-button-action-small.x-button-active, .x-toolbar .x-button.x-button-action-small.x-button-active:after {
     background-image: none;
     background-color: #0062a7;
-    background-image: -webkit-linear-gradient(top, #004474, #00538d 10%, #0062a7 65%, #0064a9);
-    background-image: -moz-linear-gradient(top, #004474, #00538d 10%, #0062a7 65%, #0064a9);
-    background-image: -o-linear-gradient(top, #004474, #00538d 10%, #0062a7 65%, #0064a9);
-    background-image: -ms-linear-gradient(top, #004474, #00538d 10%, #0062a7 65%, #0064a9)
+    /*background-image: -webkit-linear-gradient(top, #004474, #00538d 10%, #0062a7 65%, #0064a9);*/
+    /*background-image: -moz-linear-gradient(top, #004474, #00538d 10%, #0062a7 65%, #0064a9);*/
+    /*background-image: -o-linear-gradient(top, #004474, #00538d 10%, #0062a7 65%, #0064a9);*/
+    /*background-image: -ms-linear-gradient(top, #004474, #00538d 10%, #0062a7 65%, #0064a9)*/
 }
 
 .x-button.x-button-confirm, .x-toolbar .x-button.x-button-confirm, .x-button.x-button-confirm-round, .x-toolbar .x-button.x-button-confirm-round, .x-button.x-button-confirm-small, .x-toolbar .x-button.x-button-confirm-small {
@@ -5452,7 +5452,7 @@ body.x-desktop {
 .x-tabbar.x-docked-bottom .x-tab .x-button-label, .x-tabbar.x-docked-bottom .x-tab .x-badge, .x-tabbar.x-docked-bottom .x-tab .x-hasbadge .x-badge, .x-hasbadge .x-tabbar.x-docked-bottom .x-tab .x-badge {
     margin: 0;
     padding: .1em 0 .2em 0;
-    font-size: 9px;
+    font-size: .7em;
     line-height: 12px;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased
@@ -5956,4 +5956,61 @@ p.name {
 
 
 
+}
+
+.x-toolbar .x-button .x-button-label {
+    font-size: 1em !important;
+}
+
+#ext-tabbar-1 {
+    background-color: #4D4D50;
+    background-image: none;
+    border-top-width: 0;
+    border-bottom-width: 0;
+
+}
+
+.x-tabbar.x-docked-bottom .x-tab {
+    padding: .3em;
+    min-height: 100%;
+    -webkit-border-radius: 0em;
+    border-radius: 0em;
+    width: 25%;
+}
+
+.x-tabbar-dark .x-tab {
+    color: #ffffff;
+}
+
+.x-tabbar-dark.x-docked-bottom .x-tab-active{
+    background-color: #1985D0;
+    background-image: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.x-title {
+    line-height: 2em;
+    font-size: 1em;
+}
+
+.x-button-label, .x-badge, .x-hasbadge .x-badge {
+    font-weight: normal;
+}
+
+
+.x-calc-button {
+    margin: 1.5em 0.6em 0px;
+    color: rgb(25, 133, 208);
+    border: 1px solid rgb(25, 133, 208);
+    border-radius: 0.2em;
+    font-size: 0.9em;
+    padding: 0.5em 0px;
+    -webkit-tap-highlight-color: rgb(25, 133, 208);
+    background: rgb(255, 255, 255);
+}
+
+.x-calc-button-pressing {
+    background-image: none !important;
+    background-color: #c4c4c4 !important;
 }

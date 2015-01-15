@@ -5,6 +5,7 @@ Ext.define('HLSCalculator.view.QuotePage',{
     extend: 'Ext.Container',
     xtype: 'quotepage',
     config: {
+        id: 'quotepage',
         items: [{
             xtype: 'image',
             id: 'headerCmp',
