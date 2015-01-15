@@ -10,6 +10,9 @@ Ext.define('HLSCalculator.utils.Common',{
             }
             return parseInt(price).toFixed(2).replace(/\d{1,3}(?=(\d{3})+(\.\d*)?$)/g, '$&,')
         },
+        float4price: function(formatedprice){
+            return formatedprice.replace(/,/g,"");
+        },
         //判断值是否有效
         isValid: function(value) {
             switch (value){

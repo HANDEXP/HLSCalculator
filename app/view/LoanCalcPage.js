@@ -22,14 +22,28 @@ Ext.define('HLSCalculator.view.LoanCalcPage', {
                 }, {
                     xtype: 'textfield',
                     id: 'planCmp',
-                    value: '请先选择金融方案'
+                    value: '请先选择金融方案',
+                    disabled: true
                 }, {
                     xtype: 'textfield',
                     id: 'guidingPriceCmp',
                     label: '市场指导价格',
                     labelWidth: '8em',
                     name: 'guidingPrice',
-                    labelCls: 'calc-item'
+                    labelCls: 'calc-item',
+                    listeners: {
+                        blur: function(that, e, eOpts){
+                            var newValue = that.getValue(),
+                                isValid = HLSCalculator.utils.Common.isValid;
+                            if(!isValid(newValue)){
+                                return;
+                            }
+                            HLSCalculator.utils.Data.setPrice(HLSCalculator.utils.Common.float4price(newValue));
+                            var downPercentage = Ext.getCmp("downPercentageCmp").getValue();
+                            var downPayment = parseFloat(HLSCalculator.utils.Common.float4price(newValue)) * (parseFloat(downPercentage) > 1 || downPercentage.charAt(downPercentage.length - 1) == '%' ? parseFloat(downPercentage) / 100 : parseFloat(downPercentage));
+                            Ext.getCmp("downPaymentCmp").setValue(downPayment);
+                        }
+                    }
                 }, {
                     xtype: 'textfield',
                     label: '按首付款比例',
@@ -148,7 +162,11 @@ Ext.define('HLSCalculator.view.LoanCalcPage', {
                         HLSCalculator.utils.Data.setNper(nper);
                         HLSCalculator.utils.Data.setMonthlyPayment(monthlyPayment);
                         //alert(monthlyPayment);
-
+                        Ext.Function.createDelayed(
+                            function(){
+                                Ext.getCmp('mainCmp').setActiveItem(3);
+                            }
+                            ,500)();
                     }
                 }
             }

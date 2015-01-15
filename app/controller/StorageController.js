@@ -102,7 +102,6 @@ Ext.define('HLSCalculator.controller.StorageController', {
         Ext.getCmp('titleBarCmp').setTitle('贷款计算器');
     },
     syncFn: function(){
-
         //financialPlanData.json
 
          Ext.Ajax.request({
@@ -120,9 +119,9 @@ Ext.define('HLSCalculator.controller.StorageController', {
                  }
                  finalcialStroe.sync();
 
+
              },
              failure : function(response){
-
              }
 
 
