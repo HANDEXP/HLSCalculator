@@ -97,7 +97,7 @@ Ext.define('HLSCalculator.controller.StorageController', {
         Ext.getCmp("downPercentageCmp").setValue(downPaymentRatio);
         Ext.getCmp("downPaymentCmp").setValue(downPayment);
         Ext.getCmp("nperCmp").setValue(nper);
-        Ext.getCmp('guidingPriceCmp').setValue(HLSCalculator.utils.Common.format4price(price));
+        Ext.getCmp('guidingPriceCmp').setValue(price);
         //debugger;
         Ext.getCmp('titleBarCmp').setTitle('贷款计算器');
     },

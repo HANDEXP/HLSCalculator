@@ -25,15 +25,17 @@ Ext.define('HLSCalculator.view.LoanCalcPage', {
                     value: '请先选择金融方案',
                     disabled: true
                 }, {
-                    xtype: 'textfield',
+                    xtype: 'numberfield',
                     id: 'guidingPriceCmp',
                     label: '市场指导价格',
                     labelWidth: '8em',
                     name: 'guidingPrice',
                     labelCls: 'calc-item',
+
+
                     listeners: {
                         blur: function(that, e, eOpts){
-                            var newValue = that.getValue(),
+                            var newValue = that.getValue().toString(),
                                 isValid = HLSCalculator.utils.Common.isValid;
                             if(!isValid(newValue)){
                                 return;
@@ -53,7 +55,7 @@ Ext.define('HLSCalculator.view.LoanCalcPage', {
                     labelCls: 'calc-item',
                     listeners: {
                         blur: function (that, e, eOpts) {
-                            var newValue = that.getValue(),
+                            var newValue = that.getValue().toString(),
                                 isValid = HLSCalculator.utils.Common.isValid,
                                 getPrice = HLSCalculator.utils.Data.getPrice();
                             if (!isValid(newValue)) {
@@ -70,7 +72,7 @@ Ext.define('HLSCalculator.view.LoanCalcPage', {
                         }
                     }
                 }, {
-                    xtype: 'textfield',
+                    xtype: 'numberfield',
                     label: '按首付款金额',
                     id: 'downPaymentCmp',
                     labelWidth: '8em',
@@ -84,7 +86,7 @@ Ext.define('HLSCalculator.view.LoanCalcPage', {
                                 isValid = HLSCalculator.utils.Common.isValid,
                                 getPrice = HLSCalculator.utils.Data.getPrice(),
                                 format4payment = HLSCalculator.utils.Common.format4payment;
-                            newValue = that.getValue();
+                            newValue = that.getValue().toString();
                             if (!isValid(newValue)) {
                                 return;
                             }
@@ -115,7 +117,7 @@ Ext.define('HLSCalculator.view.LoanCalcPage', {
                         }
                     }
                 }, {
-                    xtype: 'textfield',
+                    xtype: 'numberfield',
                     label: '贷款期限',
                     id: 'nperCmp',
                     labelWidth: '8em',
