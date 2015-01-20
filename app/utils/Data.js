@@ -17,11 +17,13 @@ Ext.define('HLSCalculator.utils.Data',{
         monthlyPayment: '',
         //金融方案
         "downPaymentRatio": "",
-        "annualRate": "13%",
+        "downPayment": "",
+        "intRate": "",
         "annualPayItems": "",
-        "nper": "",
-        "fvRation": "10%",
-        "payTypeRatio": "",
+        "leaseTimes": "",
+        "balloonRatio": "",
+        "balloon": "",
+        "payType": "",
         "planName": "请先选择金融方案"
 
     },

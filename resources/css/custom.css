@@ -5789,7 +5789,7 @@ div.header {
 
 /* 默认样式 */
 body {
-    font-size: 100% !important;
+    font-size: 85% !important;
 }
 div.quoteItems {
     width: 100%;
@@ -5832,7 +5832,7 @@ div.quoteItemValue {
 /* 媒体查询样式 ip5*/
 @media screen and (min-device-height: 550px) {
     body {
-        font-size: 110% !important;
+        font-size: 100% !important;
     }
 
     div.quoteItems {
@@ -5873,10 +5873,97 @@ div.quoteItemValue {
     }
 }
 
-/* 媒体查询样式 ip6*/
-@media screen and (min-device-height: 635px) {
+/* 媒体查询样式 Samsung S3*/
+@media screen and (min-device-height: 630px) {
     body {
-        font-size: 135% !important;
+        font-size: 102% !important;
+    }
+
+    div.quoteItems {
+        width: 100%;
+        margin: 7% 0 7% 0;
+        display: block;
+    }
+
+    div.quoteItemTitle, div.quoteItemLine, div.quoteItemValue {
+        float: left;
+        /*font-size: 0.8em;*/
+    }
+
+    div.quoteItemTitle {
+        width: 24%;
+        text-align: right;
+    }
+
+    div.quoteItemLine {
+        background: #ccd9dc;
+        width: 20%;
+        height: 3px;
+        margin: 0.5em 3% 0.5em 3%;
+    }
+
+    .quoteLabel {
+        bottom: 5px;
+        position: absolute;
+        /*font-size: 1em;*/
+        color: #4d7381;
+        left: 2em;
+    }
+
+    div.quoteItemValue {
+        width: 50%;
+        text-align: left;
+        color: #4d7381;
+    }
+}
+
+/* 媒体查询样式 ip6*/
+@media screen and (min-device-height: 660px) {
+    body {
+        font-size: 110% !important;
+    }
+
+    div.quoteItems {
+        width: 100%;
+        margin: 7% 0 7% 0;
+        display: block;
+    }
+
+    div.quoteItemTitle, div.quoteItemLine, div.quoteItemValue {
+        float: left;
+        /*font-size: 0.8em;*/
+    }
+
+    div.quoteItemTitle {
+        width: 24%;
+        text-align: right;
+    }
+
+    div.quoteItemLine {
+        background: #ccd9dc;
+        width: 20%;
+        height: 3px;
+        margin: 0.5em 3% 0.5em 3%;
+    }
+
+    .quoteLabel {
+        bottom: 5px;
+        position: absolute;
+        /*font-size: 1em;*/
+        color: #4d7381;
+        left: 2em;
+    }
+
+    div.quoteItemValue {
+        width: 50%;
+        text-align: left;
+        color: #4d7381;
+    }
+}
+/* 媒体查询样式 ip6p*/
+@media screen and (min-device-height: 700px) {
+    body {
+        font-size: 130% !important;
     }
 
     div.quoteItems {
@@ -5934,7 +6021,7 @@ div.quoteItemValue {
 
 
 div.tweetdiv {
-    float: left; width: 30%;margin: 10px 5px 10px 5px;
+    float: left; width: auto;margin: 10px 5px 10px 5px;
 
 }
 
@@ -5942,6 +6029,8 @@ p.name {
     font-size: 0.8em;
     text-align: center;
     margin-top: 5px;
+    width: 6em;
+    height: 2em;
 
 }
 
@@ -6000,7 +6089,7 @@ p.name {
 
 
 .x-calc-button {
-    margin: 1.5em 0.6em 0px;
+    margin: 1.6em 0.6em;
     color: rgb(25, 133, 208);
     border: 1px solid rgb(25, 133, 208);
     border-radius: 0.2em;
@@ -6013,4 +6102,23 @@ p.name {
 .x-calc-button-pressing {
     background-image: none !important;
     background-color: #c4c4c4 !important;
+}
+
+
+#ext-component-4 .x-dataview-item {
+    display: inline-block;
+    margin: 0 1%;
+    width: 30%;
+    height: 6em;
+}
+
+.requiredField .x-form-label {
+    color: red;
+}
+
+.requiredField .x-form-label:after {
+    content: "(*)";
+    display: inline;
+    color: red;
+    font-size: 0.6em;
 }

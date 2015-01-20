@@ -7,7 +7,7 @@ Ext.define('HLSCalculator.store.FinancialPlanStore',{
     xtype: 'financialplanstore',
     config: {
         storeId: 'financialplanstore',
-        model: 'HLSCalculator.model.FinalcialPlan',
+        model: 'HLSCalculator.model.FinancialPlan',
         autoLoad: true,
         //proxy: {
         //    type: 'ajax',

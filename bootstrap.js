@@ -639,9 +639,10 @@ Ext.ClassManager.addNameAlternateMappings({
   "Ext.viewport.WindowsPhone": [
     "Ext.viewport.WP"
   ],
+  "HLSCalculator.controller.FinancialPlanController": [],
   "HLSCalculator.controller.StorageController": [],
   "HLSCalculator.model.Brand": [],
-  "HLSCalculator.model.FinalcialPlan": [],
+  "HLSCalculator.model.FinancialPlan": [],
   "HLSCalculator.model.Pic": [],
   "HLSCalculator.model.Series": [],
   "HLSCalculator.model.Type": [],
@@ -1382,9 +1383,10 @@ Ext.ClassManager.addNameAliasMappings({
   "Ext.viewport.Ios": [],
   "Ext.viewport.Viewport": [],
   "Ext.viewport.WindowsPhone": [],
+  "HLSCalculator.controller.FinancialPlanController": [],
   "HLSCalculator.controller.StorageController": [],
   "HLSCalculator.model.Brand": [],
-  "HLSCalculator.model.FinalcialPlan": [],
+  "HLSCalculator.model.FinancialPlan": [],
   "HLSCalculator.model.Pic": [],
   "HLSCalculator.model.Series": [],
   "HLSCalculator.model.Type": [],

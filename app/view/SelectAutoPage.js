@@ -10,12 +10,6 @@ Ext.define('HLSCalculator.view.SelectAutoPage', {
             xtype: 'fieldset',
             style: 'margin: .5em .5em .5em;',
             items: [
-                //{
-                //    xtype: 'button',
-                //    id: 'sync',
-                //    text: '同步'
-                //
-                //},
                 {
                     xtype: 'selectfield',
                     id: 'brandSelectFieldCmp',
@@ -63,7 +57,7 @@ Ext.define('HLSCalculator.view.SelectAutoPage', {
                     listeners: {
                         change: function (selectfield, newValue, oldValue, eOpts) {
                             //同步初始化时跳过
-                            if(oldValue == null){
+                            if (oldValue == null) {
                                 return;
                             }
                             var imageCmp,
@@ -75,7 +69,7 @@ Ext.define('HLSCalculator.view.SelectAutoPage', {
                             seriesValue = Ext.getCmp('seriesSelectFieldCmp').getValue();
                             //换图片
                             //seriesValue == 'default' ? null : imageCmp.setSrc('resources/images/' + seriesValue.split('-')[1].toUpperCase() + '.jpg')
-                            base64 =  Ext.getStore('picstore').findRecord('pic_id',selectfield._value.data.pic_id).data.base64;
+                            base64 = Ext.getStore('picstore').findRecord('pic_id', selectfield._value.data.pic_id).data.base64;
                             imageCmp.setSrc(base64);
                             //显示报价和车型号
                             selectfield._value.data.price == '' ? Ext.getCmp('priceLabelCmp').setHtml('厂商指导价：暂无') : Ext.getCmp('priceLabelCmp').setHtml("厂商指导价：" + '¥ ' + HLSCalculator.utils.Common.format4price(selectfield._value.data.price));
@@ -87,14 +81,14 @@ Ext.define('HLSCalculator.view.SelectAutoPage', {
                             string = [HLSCalculator.utils.Data.getBrand(), HLSCalculator.utils.Data.getType()].join(' ');
                             //带出车型和厂商指导价
 
-                            if(isValid(HLSCalculator.utils.Data.getPrice())){
+                            if (isValid(HLSCalculator.utils.Data.getPrice())) {
                                 Ext.getCmp('autoTypeCmp').setValue(string);
                                 Ext.Function.createDelayed(
-                                    function(){
+                                    function () {
                                         //Ext.getCmp('mainCmp').setActiveItem(1);
                                     }
-                                ,1200)();
-                            }else{
+                                    , 1200)();
+                            } else {
                                 Ext.getCmp('autoTypeCmp').setValue('请先选择车系和车型');
                             }
 

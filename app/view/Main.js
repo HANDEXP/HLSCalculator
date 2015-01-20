@@ -11,7 +11,10 @@ Ext.define('HLSCalculator.view.Main', {
     ],
     config: {
         tabBarPosition: 'bottom',
-
+        scrollable: {
+            direction: 'vertical',
+            directionLock: true
+        },
         items: [
             {
                 title: '选购车型',
@@ -19,7 +22,7 @@ Ext.define('HLSCalculator.view.Main', {
                 xtype: 'selectautopage'
             },
             {
-                title : '金融方案',
+                title : '报价方案',
                 iconCls: 'action',
                 xtype: 'financialcard'
 

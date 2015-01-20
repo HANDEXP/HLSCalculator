@@ -20,11 +20,13 @@ Ext.application({
         'HLSCalculator.utils.Data',
         'HLSCalculator.utils.Template',
         'Ext.Label',
-        'Ext.Toast'
+        'Ext.Toast',
+        'Ext.field.Number'
     ],
 
     controllers: [
-        'StorageController'
+        'StorageController',
+        'FinancialPlanController'
     ],
 
     views: [
@@ -51,7 +53,8 @@ Ext.application({
         'HLSCalculator.model.Series',
         'HLSCalculator.model.Type',
         'HLSCalculator.model.Pic',
-        'HLSCalculator.model.FinalcialPlan'
+        'HLSCalculator.model.FinancialPlan',
+        'HLSCalculator.model.ComboBox'
     ],
     icon: {
         '57': 'resources/icons/Icon.png',
