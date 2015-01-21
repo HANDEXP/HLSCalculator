@@ -26,7 +26,8 @@ Ext.application({
 
     controllers: [
         'StorageController',
-        'FinancialPlanController'
+        'FinancialPlanController',
+        'LoanCalcController'
     ],
 
     views: [

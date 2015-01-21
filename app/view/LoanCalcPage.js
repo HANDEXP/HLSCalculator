@@ -31,17 +31,13 @@ Ext.define('HLSCalculator.view.LoanCalcPage', {
             ]
         }, {
             xtype: 'button',
+            name: 'calcButton',
             pressedCls: 'x-calc-button-pressing',
             text: '计算',
             cls: 'x-calc-button',
             listeners: {}
         }
         ]
-    },
-    listeners: {
-        activate: function (newActiveItem, that, oldActiveItem, eOpts) {
-
-        }
     }
 }, function () {
 

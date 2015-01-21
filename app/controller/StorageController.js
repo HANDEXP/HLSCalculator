@@ -8,8 +8,7 @@ Ext.define('HLSCalculator.controller.StorageController', {
         stores: ['BrandStore','SeriesStore','TypeStore'],
         refs: {
             selectautopage: 'selectautopage',
-            quotepage: 'quotepage',
-            loancalcpage: 'loancalcpage'
+            quotepage: 'quotepage'
         },
         control: {
             selectautopage: {
@@ -18,12 +17,7 @@ Ext.define('HLSCalculator.controller.StorageController', {
             },
             quotepage: {
                 show: 'onQuotePageActive'
-            },
-            loancalcpage: {
-                show: 'onLoanCalcPageActive'
             }
-
-
         }
     },
     onSelectPageInit: function() {
@@ -71,44 +65,6 @@ Ext.define('HLSCalculator.controller.StorageController', {
 
 
         //Ext.Msg.alert();
-    },
-    onLoanCalcPageActive: function(that,eOpts) {
-        var type,
-            planName,
-            downPaymentRatio,
-            downPayment,
-            leaseTimes,
-            price,
-            isValid = HLSCalculator.utils.Common.isValid;
-        type = HLSCalculator.utils.Data.getType();
-        planName = HLSCalculator.utils.Data.getPlanName();
-        downPaymentRatio = HLSCalculator.utils.Data.getDownPaymentRatio();
-        leaseTimes = HLSCalculator.utils.Data.getLeaseTimes();
-        price = HLSCalculator.utils.Data.getPrice();
-        if(downPayment){
-            downPayment = parseFloat(price) * (parseFloat(downPaymentRatio) > 1 || downPaymentRatio.charAt(downPaymentRatio.length - 1) == '%' ? parseFloat(downPaymentRatio) / 100 : parseFloat(downPaymentRatio));
-        }
-
-        console.log("type = "+type);
-        if(type == "" || !isValid(type)){
-            Ext.Msg.alert('', '   请先选择车型。     ', function(){
-                Ext.getCmp('mainCmp').setActiveItem(0);
-            });
-        }
-        if(planName == "请先选择金融方案"){
-            Ext.Msg.alert('', '   请先选择金融方案。     ', function(){
-                Ext.getCmp('mainCmp').setActiveItem(1);
-            });
-        }
-        Ext.getCmp("planCmp").setValue(planName);
-        //Ext.getCmp("downPercentageCmp").setValue(downPaymentRatio);
-        //Ext.getCmp("downPaymentCmp").setValue(downPayment);
-        //Ext.getCmp("nperCmp").setValue(nper);
-        //Ext.getCmp('guidingPriceCmp').setValue(price);
-        //debugger;
-        Ext.getCmp('titleBarCmp').setTitle('贷款计算器');
-
-
     },
     syncFn: function(){
         //financialPlanData.json

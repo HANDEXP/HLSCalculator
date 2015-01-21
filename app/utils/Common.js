@@ -39,6 +39,10 @@ Ext.define('HLSCalculator.utils.Common',{
         format4payment: function(payment){
             return (Math.round(payment * 10000)/100).toFixed(2) + '%'
         },
+        //去百分号
+        format4percent: function(percent){
+            return parseFloat(percent.slice(0,-1))/100
+        },
         calculate : function(p_rate,p_nper,p_pv,p_fv,p_type)
         {
             var pmt, r,R1, n,pv,fv,ct;

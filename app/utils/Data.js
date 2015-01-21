@@ -24,7 +24,10 @@ Ext.define('HLSCalculator.utils.Data',{
         "balloonRatio": "",
         "balloon": "",
         "payType": "",
-        "planName": "请先选择金融方案"
+        "planName": "请先选择金融方案",
+        //上下限
+        "downPaymentRatioValidation":{},
+        "balloonRatioValidation":{}
 
     },
     constructor: function(config) {

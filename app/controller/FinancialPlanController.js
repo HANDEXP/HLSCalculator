@@ -36,6 +36,10 @@ Ext.define('HLSCalculator.controller.FinancialPlanController', {
         HLSCalculator.utils.Data.setPayType(data.raw.pay_type.default_value);
         HLSCalculator.utils.Data.setPlanName(data.raw.description.default_value);
 
+        //存上下线
+        HLSCalculator.utils.Data.setDownPaymentRatioValidation({'upper_limit':data.raw.down_payment_ratio.upper_limit,'lower_limit':data.raw.down_payment_ratio.lower_limit});
+        HLSCalculator.utils.Data.setBalloonRatioValidation({'upper_limit':data.raw.balloon_ratio.upper_limit,'lower_limit':data.raw.balloon_ratio.lower_limit});
+
         //删除旧界面&增加计算界面组件
         //车价
         this.addExtCmp(data.raw.lease_item_amount,'leaseItemAmount');
@@ -50,7 +54,7 @@ Ext.define('HLSCalculator.controller.FinancialPlanController', {
         //期数
         this.addExtCmp(data.raw.lease_times,'leaseTimes');
         //尾款比例
-        this.addExtCmp(data.raw.balloon_ratio,'balloonRatio');
+        this.addExtCmp(data.raw.balloon_ratio,'balloonPercentage');
         //大额尾款
         this.addExtCmp(data.raw.balloon,'balloon');
         //先付、后付
@@ -67,7 +71,7 @@ Ext.define('HLSCalculator.controller.FinancialPlanController', {
         var validationType = obj.validation_type;
         switch (validationType){
             case 'NUMBERFIELD':
-                if(attrName =='intRate'){
+                if(attrName =='intRate' || attrName =='downPercentage' || attrName == 'balloonPercentage'){
                     cmpType = 'Ext.field.Text';
                 }else{
                     cmpType = 'Ext.field.Number';
@@ -85,16 +89,22 @@ Ext.define('HLSCalculator.controller.FinancialPlanController', {
             id: attrName+'Cmp',
             name: attrName,
             labelCls: 'calc-item',
-            value: obj.percent == '%' ? (parseFloat(obj.default_value) * 100).toString() + obj.percent : obj.default_value,
+            //value: obj.percent == '%' ? (parseFloat(obj.default_value) * 100).toString() + obj.percent : obj.default_value,
             hidden: obj.display_flag == 'Y' ? false : true,
             required: obj.input_mode == 'REQUIRED' ? true : false,
             requiredCls: 'requiredField',
             readOnly: obj.input_mode == 'READONLY' ? true : false
         }));
+        var cmp = Ext.getCmp(attrName+'Cmp');
         //下拉框添加数据集
+        if(obj.default_value){
+            cmp.setValue(obj.percent == '%' ? (parseFloat(obj.default_value) * 100).toString() + obj.percent : obj.default_value);
+        }else{
+            cmp.setValue("");
+        }
         if(cmpType == 'Ext.field.Select'){
-            var cmp = Ext.getCmp(attrName+'Cmp');
             //debugger;
+
             var store =  Ext.create('Ext.data.Store',{
                 storeId: attrName + 'Store',
                 model: 'HLSCalculator.model.ComboBox',
@@ -103,6 +113,10 @@ Ext.define('HLSCalculator.controller.FinancialPlanController', {
             cmp.setStore(store)
             cmp.setDisplayField("value_name");
             cmp.setValueField("value_code");
+        }
+        //车价
+        if(attrName == 'leaseItemAmount'){
+            //cmp.setValue(HLSCalculator.utils.Data.getPrice());
         }
     }
 })
