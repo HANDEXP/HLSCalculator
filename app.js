@@ -92,6 +92,7 @@ Ext.application({
                 {
                     text: '后退',
                     style: 'border: 0px;background-image: none;background-color: #1986D0;',
+                    pressedCls: 'x-back-button-pressing',
                     align: 'left',
                     listeners : {
                         tap : function(that, e, eOpts)
@@ -115,16 +116,8 @@ Ext.application({
                             if(id == 'quotepage'){
                                 //////4
                                 mainCmp.setActiveItem(2);
-
                             }
-
-
-
-
                         }
-
-
-
                     }
                 }
             ]

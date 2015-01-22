@@ -100,23 +100,26 @@ Ext.define('HLSCalculator.controller.FinancialPlanController', {
             readOnly: obj.input_mode == 'READONLY' ? true : false
         }));
         var cmp = Ext.getCmp(attrName+'Cmp');
-        //下拉框添加数据集
-        if(obj.default_value){
-            cmp.setValue(obj.percent == '%' ? format4payment(obj.default_value) : obj.default_value);
-        }else{
-            cmp.setValue("");
-        }
         if(cmpType == 'Ext.field.Select'){
             //debugger;
-
+            //添加－1项
+            obj.store.splice(0,0,{"value_code":-1,"value_name":'请选择'});
             var store =  Ext.create('Ext.data.Store',{
                 storeId: attrName + 'Store',
                 model: 'HLSCalculator.model.ComboBox',
                 data: obj.store
             });
+
             cmp.setStore(store)
             cmp.setDisplayField("value_name");
             cmp.setValueField("value_code");
+            cmp.setValue(obj.default_value);
+        }
+        //下拉框添加数据集
+        if(obj.default_value != "" && cmpType != 'Ext.field.Select'){
+            cmp.setValue(obj.percent == '%' ? format4payment(obj.default_value) : obj.default_value);
+        }else{
+
         }
         //车价
         if(attrName == 'leaseItemAmount'){

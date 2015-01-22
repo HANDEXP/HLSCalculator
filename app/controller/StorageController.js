@@ -70,8 +70,8 @@ Ext.define('HLSCalculator.controller.StorageController', {
         //financialPlanData.json
 
         Ext.Ajax.request({
-            //url: 'http://m.hand-china.com/dev/financialPlanData.json',
-            url: 'sample.json',
+            url: 'http://m.hand-china.com/dev/sample.json',
+            //url: 'sample.json',
             success: function (response) {
                 var json, length,planOptions = [{"index":-1,"text":"请先选择报价方案"}],updateIcon;
                 var text = response.responseText;
@@ -80,7 +80,7 @@ Ext.define('HLSCalculator.controller.StorageController', {
                 var finalcialStroe = Ext.getStore('financialplanstore');
                 finalcialStroe.removeAll();
                 length = json.price_list.length;
-                for (var i = 0; i < 8; i++) {
+                for (var i = 0; i < length; i++) {
                     finalcialStroe.add(json.price_list[i]);
                     planOptions.push({"index":i,"text":json.price_list[i].description.default_value});
                 }

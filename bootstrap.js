@@ -640,8 +640,10 @@ Ext.ClassManager.addNameAlternateMappings({
     "Ext.viewport.WP"
   ],
   "HLSCalculator.controller.FinancialPlanController": [],
+  "HLSCalculator.controller.LoanCalcController": [],
   "HLSCalculator.controller.StorageController": [],
   "HLSCalculator.model.Brand": [],
+  "HLSCalculator.model.ComboBox": [],
   "HLSCalculator.model.FinancialPlan": [],
   "HLSCalculator.model.Pic": [],
   "HLSCalculator.model.Series": [],
@@ -660,7 +662,6 @@ Ext.ClassManager.addNameAlternateMappings({
   "HLSCalculator.view.HeaderCmp": [],
   "HLSCalculator.view.LoanCalcPage": [],
   "HLSCalculator.view.Main": [],
-  "HLSCalculator.view.PickerDemo": [],
   "HLSCalculator.view.QuoteItemCmp": [],
   "HLSCalculator.view.QuotePage": [],
   "HLSCalculator.view.SelectAutoPage": []
@@ -1384,8 +1385,10 @@ Ext.ClassManager.addNameAliasMappings({
   "Ext.viewport.Viewport": [],
   "Ext.viewport.WindowsPhone": [],
   "HLSCalculator.controller.FinancialPlanController": [],
+  "HLSCalculator.controller.LoanCalcController": [],
   "HLSCalculator.controller.StorageController": [],
   "HLSCalculator.model.Brand": [],
+  "HLSCalculator.model.ComboBox": [],
   "HLSCalculator.model.FinancialPlan": [],
   "HLSCalculator.model.Pic": [],
   "HLSCalculator.model.Series": [],
@@ -1425,9 +1428,6 @@ Ext.ClassManager.addNameAliasMappings({
   ],
   "HLSCalculator.view.Main": [
     "widget.main"
-  ],
-  "HLSCalculator.view.PickerDemo": [
-    "widget.pickerdemo"
   ],
   "HLSCalculator.view.QuoteItemCmp": [
     "widget.xquoteitem"

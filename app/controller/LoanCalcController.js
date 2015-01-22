@@ -60,6 +60,8 @@ Ext.define('HLSCalculator.controller.LoanCalcController', {
                     Ext.getCmp('mainCmp').setActiveItem(3);
                 }
                 ,500)();
+        }else{
+            Ext.toast('请检查必输项', 2000);
         }
     },
     //金额带出比例
@@ -160,13 +162,13 @@ Ext.define('HLSCalculator.controller.LoanCalcController', {
                 break;
             case 1:
                 //弹窗&清空
-                alert('首付比例低于下限');
+                Ext.toast('首付比例低于下限', 1500);
                 Ext.getCmp(percentageCmp) ? Ext.getCmp(percentageCmp).setValue(format4payment(lowerLimit)) : null;
                 this.downPercentage2downPayment(null, null, null);
                 return false;
                 break;
             case 2:
-                alert('首付比例高于上限');
+                Ext.toast('首付比例高于上限', 1500);
                 Ext.getCmp(percentageCmp) ? Ext.getCmp(percentageCmp).setValue(format4payment(upperLimit)) : null;
                 this.downPercentage2downPayment(null, null, null);
                 return false;
@@ -209,7 +211,6 @@ Ext.define('HLSCalculator.controller.LoanCalcController', {
         if (Ext.getCmp('leaseItemAmountCmp')) {
             Ext.getCmp('leaseItemAmountCmp').setValue(price);
             //this.downPayment2downPercentage();
-
         }
 
         //设置标题

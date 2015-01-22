@@ -6104,6 +6104,10 @@ p.name {
     background-color: #c4c4c4 !important;
 }
 
+.x-back-button-pressing {
+    background-image: none !important;
+    background-color: #006699 !important;
+}
 
 #ext-component-4 .x-dataview-item {
     display: inline-block;
