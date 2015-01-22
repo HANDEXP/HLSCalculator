@@ -73,7 +73,7 @@ Ext.define('HLSCalculator.controller.StorageController', {
             //url: 'http://m.hand-china.com/dev/financialPlanData.json',
             url: 'sample.json',
             success: function (response) {
-                var json, length,planOptions = [{"index":-1,"text":"请先选择报价方案"}];
+                var json, length,planOptions = [{"index":-1,"text":"请先选择报价方案"}],updateIcon;
                 var text = response.responseText;
                 json = JSON.parse(text).body;
                 //debugger;
@@ -87,6 +87,7 @@ Ext.define('HLSCalculator.controller.StorageController', {
                 HLSCalculator.utils.Data.setPlanOptions(planOptions);
                 Ext.getCmp("planCmp").setOptions(HLSCalculator.utils.Data.getPlanOptions());
                 finalcialStroe.sync();
+                Ext.getDom('ext-element-68').innerHTML = "<div class=\"newUpdate\"></div>";
 
 
             },

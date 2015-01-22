@@ -46,6 +46,7 @@ Ext.define('HLSCalculator.controller.LoanCalcController', {
             var fv = price * parseFloat(HLSCalculator.utils.Data.getBalloonRatio() != "" ? HLSCalculator.utils.Data.getBalloonRatio() : '0');
             var monthlyPayment = calculate(rate, leaseTimes, pv, fv, 0);
             console.log(monthlyPayment);
+            //存入信息
             HLSCalculator.utils.Data.setPlanName(planName);
             HLSCalculator.utils.Data.setDownPaymentRatio(downPercentage)
             HLSCalculator.utils.Data.setDownPayment(downPayment);
@@ -53,6 +54,7 @@ Ext.define('HLSCalculator.controller.LoanCalcController', {
             HLSCalculator.utils.Data.setMonthlyPayment(monthlyPayment);
 
             //alert(monthlyPayment);
+            //500毫秒后跳转下一页
             Ext.Function.createDelayed(
                 function(){
                     Ext.getCmp('mainCmp').setActiveItem(3);

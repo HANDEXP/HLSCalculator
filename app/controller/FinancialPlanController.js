@@ -25,6 +25,7 @@ Ext.define('HLSCalculator.controller.FinancialPlanController', {
     },
     onFinancialCardActive: function (that, eOpts) {
         Ext.getCmp('titleBarCmp').setTitle('报价方案');
+        Ext.getDom('ext-element-68').innerHTML = "";
     },
     onFinancialPlanItem: function (that, index, target, record, e) {
         var data = Ext.getStore('financialplanstore').getAt(index);

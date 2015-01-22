@@ -6122,3 +6122,15 @@ p.name {
     color: red;
     font-size: 0.6em;
 }
+
+.newUpdate {
+    width: 10px;
+    height: 10px;
+    line-height: 10px;
+    display: inline-block;
+    position: absolute;
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAY0lEQVQYV2NkgIL/DAwOQGY9EBtAhS4A6UZGBoYDID6QZmAAKmqAKoLpQ6ZBihsYoSbtx6YCScwRpBBktD0BhQdBCj8AFfETUPiBWIUfSbIaFCyEPUN08KAFOCg8kQO8ARbgAHagHeRRaOfTAAAAAElFTkSuQmCC);
+    color: #fff;
+    border-radius: 0px;
+    left: 1.2em;
+}
