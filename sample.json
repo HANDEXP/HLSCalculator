@@ -777,7 +777,7 @@
                     "store": ""
                 },
                 "int_rate": {
-                    "default_value": "",
+                    "default_value": ".1",
                     "upper_limit": "",
                     "lower_limit": "",
                     "input_mode": "READONLY",

@@ -10,10 +10,6 @@ Ext.define('HLSCalculator.utils.Data',{
         type: '',
         price: '',
         //贷款
-        downPercentage: '',
-        downPayment: '',
-        loan: '',
-        period: '',
         monthlyPayment: '',
         //金融方案
         "downPaymentRatio": "",

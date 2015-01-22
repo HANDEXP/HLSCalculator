@@ -28,7 +28,6 @@ Ext.define('HLSCalculator.controller.FinancialPlanController', {
     },
     onFinancialPlanItem: function (that, index, target, record, e) {
         var data = Ext.getStore('financialplanstore').getAt(index);
-        console.log(data);
         Ext.getCmp('plan_title_id').set('html', data.raw.description.default_value);
         Ext.getCmp('plan_desc_id').set('html', data.raw.app_description.default_value);
         //存报价方案数据
@@ -70,7 +69,6 @@ Ext.define('HLSCalculator.controller.FinancialPlanController', {
     *
     * */
     addExtCmp: function(obj,attrName){
-        console.log(obj);
         Ext.getCmp(attrName+'Cmp') ? Ext.getCmp(attrName+'Cmp').destroy() : null;
         var validationType = obj.validation_type,
             format4payment = HLSCalculator.utils.Common.format4payment;

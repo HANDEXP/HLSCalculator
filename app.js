@@ -32,7 +32,6 @@ Ext.application({
 
     views: [
         'Main',
-        'PickerDemo',
         'SelectAutoPage',
         'LoanCalcPage',
         'QuotePage',

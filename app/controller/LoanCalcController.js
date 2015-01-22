@@ -40,7 +40,25 @@ Ext.define('HLSCalculator.controller.LoanCalcController', {
             leaseTimes = parseInt(Ext.getCmp("leaseTimesCmp")._value),
             price = parseInt(HLSCalculator.utils.Data.getPrice()),
             calculate = HLSCalculator.utils.Common.calculate;
-            debugger;
+        if (downPercentage != '' && downPayment != '' && leaseTimes != '') {
+            var rate = parseFloat(HLSCalculator.utils.Data.getIntRate());
+            var pv = parseInt(downPayment) - parseInt(price);
+            var fv = price * parseFloat(HLSCalculator.utils.Data.getBalloonRatio() != "" ? HLSCalculator.utils.Data.getBalloonRatio() : '0');
+            var monthlyPayment = calculate(rate, leaseTimes, pv, fv, 0);
+            console.log(monthlyPayment);
+            HLSCalculator.utils.Data.setPlanName(planName);
+            HLSCalculator.utils.Data.setDownPaymentRatio(downPercentage)
+            HLSCalculator.utils.Data.setDownPayment(downPayment);
+            HLSCalculator.utils.Data.setLeaseTimes(leaseTimes);
+            HLSCalculator.utils.Data.setMonthlyPayment(monthlyPayment);
+
+            //alert(monthlyPayment);
+            Ext.Function.createDelayed(
+                function(){
+                    Ext.getCmp('mainCmp').setActiveItem(3);
+                }
+                ,500)();
+        }
     },
     //金额带出比例
     payment2Percentage: function (paymentCmp, percentageCmp) {
