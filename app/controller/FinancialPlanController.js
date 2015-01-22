@@ -8,7 +8,8 @@ Ext.define('HLSCalculator.controller.FinancialPlanController', {
         stores: ['FinancialPlanStore'],
         refs: {
             financialcard: 'financialcard',
-            financialplanlist: 'financialplanlist'
+            financialplanlist: 'financialplanlist',
+            planField: '[name=plan]'
         },
         control: {
             financialcard: {
@@ -16,6 +17,9 @@ Ext.define('HLSCalculator.controller.FinancialPlanController', {
             },
             financialplanlist: {
                 itemtap: 'onFinancialPlanItem'
+            },
+            planField: {
+                change: 'onPlanChange'
             }
         }
     },
@@ -68,7 +72,8 @@ Ext.define('HLSCalculator.controller.FinancialPlanController', {
     addExtCmp: function(obj,attrName){
         console.log(obj);
         Ext.getCmp(attrName+'Cmp') ? Ext.getCmp(attrName+'Cmp').destroy() : null;
-        var validationType = obj.validation_type;
+        var validationType = obj.validation_type,
+            format4payment = HLSCalculator.utils.Common.format4payment;
         switch (validationType){
             case 'NUMBERFIELD':
                 if(attrName =='intRate' || attrName =='downPercentage' || attrName == 'balloonPercentage'){
@@ -98,7 +103,7 @@ Ext.define('HLSCalculator.controller.FinancialPlanController', {
         var cmp = Ext.getCmp(attrName+'Cmp');
         //下拉框添加数据集
         if(obj.default_value){
-            cmp.setValue(obj.percent == '%' ? (parseFloat(obj.default_value) * 100).toString() + obj.percent : obj.default_value);
+            cmp.setValue(obj.percent == '%' ? format4payment(obj.default_value) : obj.default_value);
         }else{
             cmp.setValue("");
         }
@@ -117,6 +122,12 @@ Ext.define('HLSCalculator.controller.FinancialPlanController', {
         //车价
         if(attrName == 'leaseItemAmount'){
             //cmp.setValue(HLSCalculator.utils.Data.getPrice());
+        }
+    },
+    onPlanChange: function(that, newValue, oldValue, eOpts ){
+        if(that.id == 'planCmp' && newValue != '-1' && oldValue != '-1'){
+            this.onFinancialPlanItem(null,newValue,null,null,null);
+            Ext.getCmp('leaseItemAmountCmp').setValue(HLSCalculator.utils.Data.getPrice());
         }
     }
 })

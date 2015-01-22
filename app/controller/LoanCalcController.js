@@ -34,7 +34,13 @@ Ext.define('HLSCalculator.controller.LoanCalcController', {
         }
     },
     onTap: function (that, e, eOpts) {
-        alert();
+        var planName = Ext.getCmp("planCmp")._value.data.text,
+            downPercentage = Ext.getCmp("downPercentageCmp")._value,
+            downPayment = Ext.getCmp("downPaymentCmp")._value,
+            leaseTimes = parseInt(Ext.getCmp("leaseTimesCmp")._value),
+            price = parseInt(HLSCalculator.utils.Data.getPrice()),
+            calculate = HLSCalculator.utils.Common.calculate;
+            debugger;
     },
     //金额带出比例
     payment2Percentage: function (paymentCmp, percentageCmp) {
@@ -173,20 +179,19 @@ Ext.define('HLSCalculator.controller.LoanCalcController', {
                 Ext.getCmp('mainCmp').setActiveItem(0);
             });
         }
-        if (planName == "请先选择金融方案") {
-            Ext.Msg.alert('', '   请先选择金融方案。     ', function () {
+        if (planName == "请先选择报价方案") {
+            Ext.Msg.alert('', '   请先选择报价方案。     ', function () {
                 Ext.getCmp('mainCmp').setActiveItem(1);
             });
         }
         Ext.getCmp("planCmp").setValue(planName);
-        //Ext.getCmp("downPercentageCmp").setValue(downPaymentRatio);
-        //Ext.getCmp("downPaymentCmp").setValue(downPayment);
-        //Ext.getCmp("nperCmp").setValue(nper);
+        //需讨论
         if (Ext.getCmp('leaseItemAmountCmp')) {
             Ext.getCmp('leaseItemAmountCmp').setValue(price);
             //this.downPayment2downPercentage();
 
         }
+
         //设置标题
         Ext.getCmp('titleBarCmp').setTitle('贷款计算器');
     }

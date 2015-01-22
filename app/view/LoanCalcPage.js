@@ -23,10 +23,11 @@ Ext.define('HLSCalculator.view.LoanCalcPage', {
                     disabled: true,
                     value: '请先选择车系和车型'
                 }, {
-                    xtype: 'textfield',
+                    xtype: 'selectfield',
                     id: 'planCmp',
-                    value: '请先选择金融方案',
-                    disabled: true
+                    name: 'plan',
+                    displayField: 'text',
+                    valueField: 'index'
                 }
             ]
         }, {
