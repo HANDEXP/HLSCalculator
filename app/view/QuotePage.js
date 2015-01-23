@@ -43,7 +43,7 @@ Ext.define('HLSCalculator.view.QuotePage',{
             xtype: 'xquoteitem',
             id: 'quotedownpayment',
             data: {
-                quoteItemTitle: '首付金额',
+                quoteItemTitle: '首付款',
                 quoteItemValue: ''
             }
         },{
@@ -57,7 +57,14 @@ Ext.define('HLSCalculator.view.QuotePage',{
             xtype: 'xquoteitem',
             id: 'quotenper',
             data: {
-                quoteItemTitle: '贷款期限',
+                quoteItemTitle: '期数',
+                quoteItemValue: ''
+            }
+        },{
+            xtype: 'xquoteitem',
+            id: 'quoteballoon',
+            data: {
+                quoteItemTitle: '尾款',
                 quoteItemValue: ''
             }
         },{

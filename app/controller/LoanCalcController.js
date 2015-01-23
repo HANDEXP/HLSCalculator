@@ -39,13 +39,20 @@ Ext.define('HLSCalculator.controller.LoanCalcController', {
             downPayment = Ext.getCmp("downPaymentCmp")._value,
             leaseTimes = parseInt(Ext.getCmp("leaseTimesCmp")._value),
             price = parseInt(HLSCalculator.utils.Data.getPrice()),
+            annualPayTimes = Ext.getCmp("annualPayTimesCmp").getValue(),
+            payType = Ext.getCmp("payTypeCmp").getValue(),
             calculate = HLSCalculator.utils.Common.calculate;
         if (downPercentage != '' && downPayment != '' && leaseTimes != '') {
-            var rate = parseFloat(HLSCalculator.utils.Data.getIntRate());
+            var rate = parseFloat(HLSCalculator.utils.Data.getIntRate())/parseFloat(annualPayTimes);
             var pv = parseInt(downPayment) - parseInt(price);
             var fv = price * parseFloat(HLSCalculator.utils.Data.getBalloonRatio() != "" ? HLSCalculator.utils.Data.getBalloonRatio() : '0');
-            var monthlyPayment = calculate(rate, leaseTimes, pv, fv, 0);
-            console.log(monthlyPayment);
+            var monthlyPayment = calculate(rate, leaseTimes, pv, fv, parseInt(payType));
+            //console.log("rate:"+rate);
+            //console.log("leaseTimes:"+leaseTimes);
+            //console.log("pv:"+pv);
+            //console.log("fv:"+fv);
+            //console.log("monthlyPayment:"+monthlyPayment);
+            //debugger;
             //存入信息
             HLSCalculator.utils.Data.setPlanName(planName);
             HLSCalculator.utils.Data.setDownPaymentRatio(downPercentage)

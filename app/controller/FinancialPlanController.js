@@ -28,47 +28,47 @@ Ext.define('HLSCalculator.controller.FinancialPlanController', {
         Ext.getDom('ext-element-68').innerHTML = "";
     },
     onFinancialPlanItem: function (that, index, target, record, e) {
-        var data = Ext.getStore('financialplanstore').getAt(index);
-        Ext.getCmp('plan_title_id').set('html', data.raw.description.default_value);
-        Ext.getCmp('plan_desc_id').set('html', data.raw.app_description.default_value);
+        var data = Ext.getStore('financialplanstore').getAt(index).data;
+        Ext.getCmp('plan_title_id').set('html', data.description.default_value);
+        Ext.getCmp('plan_desc_id').set('html', data.app_description.default_value);
         //存报价方案数据
-        HLSCalculator.utils.Data.setDownPaymentRatio(data.raw.down_payment_ratio.default_value);
-        HLSCalculator.utils.Data.setIntRate(data.raw.int_rate.default_value);
-        HLSCalculator.utils.Data.setAnnualPayItems(data.raw.annual_pay_times.default_value);
-        HLSCalculator.utils.Data.setLeaseTimes(data.raw.lease_times.default_value);
-        HLSCalculator.utils.Data.setBalloonRatio(data.raw.balloon_ratio.default_value);
-        HLSCalculator.utils.Data.setPayType(data.raw.pay_type.default_value);
-        HLSCalculator.utils.Data.setPlanName(data.raw.description.default_value);
+        HLSCalculator.utils.Data.setDownPaymentRatio(data.down_payment_ratio.default_value);
+        HLSCalculator.utils.Data.setIntRate(data.int_rate.default_value);
+        HLSCalculator.utils.Data.setAnnualPayItems(data.annual_pay_times.default_value);
+        HLSCalculator.utils.Data.setLeaseTimes(data.lease_times.default_value);
+        HLSCalculator.utils.Data.setBalloonRatio(data.balloon_ratio.default_value);
+        HLSCalculator.utils.Data.setPayType(data.pay_type.default_value);
+        HLSCalculator.utils.Data.setPlanName(data.description.default_value);
 
         //存上下线
-        HLSCalculator.utils.Data.setDownPaymentRatioValidation({'upper_limit':data.raw.down_payment_ratio.upper_limit,'lower_limit':data.raw.down_payment_ratio.lower_limit});
-        HLSCalculator.utils.Data.setBalloonRatioValidation({'upper_limit':data.raw.balloon_ratio.upper_limit,'lower_limit':data.raw.balloon_ratio.lower_limit});
+        HLSCalculator.utils.Data.setDownPaymentRatioValidation({'upper_limit':data.down_payment_ratio.upper_limit,'lower_limit':data.down_payment_ratio.lower_limit});
+        HLSCalculator.utils.Data.setBalloonRatioValidation({'upper_limit':data.balloon_ratio.upper_limit,'lower_limit':data.balloon_ratio.lower_limit});
 
         //删除旧界面&增加计算界面组件
         //车价
-        this.addExtCmp(data.raw.lease_item_amount,'leaseItemAmount');
+        this.addExtCmp(data.lease_item_amount,'leaseItemAmount');
         //首付比例
-        this.addExtCmp(data.raw.down_payment_ratio,'downPercentage');
+        this.addExtCmp(data.down_payment_ratio,'downPercentage');
         //首付款
-        this.addExtCmp(data.raw.down_payment,'downPayment');
+        this.addExtCmp(data.down_payment,'downPayment');
         //年利率
-        this.addExtCmp(data.raw.int_rate,'intRate');
+        this.addExtCmp(data.int_rate,'intRate');
         //支付频率
-        this.addExtCmp(data.raw.annual_pay_times,'annualPayTimes');
+        this.addExtCmp(data.annual_pay_times,'annualPayTimes');
         //期数
-        this.addExtCmp(data.raw.lease_times,'leaseTimes');
+        this.addExtCmp(data.lease_times,'leaseTimes');
         //尾款比例
-        this.addExtCmp(data.raw.balloon_ratio,'balloonPercentage');
+        this.addExtCmp(data.balloon_ratio,'balloonPercentage');
         //大额尾款
-        this.addExtCmp(data.raw.balloon,'balloon');
+        this.addExtCmp(data.balloon,'balloon');
         //先付、后付
-        this.addExtCmp(data.raw.pay_type,'payType');
+        this.addExtCmp(data.pay_type,'payType');
         Ext.getCmp('financialcard').setActiveItem(1);
     },
     /*
-    * 动态增加field
-    *
-    * */
+     * 动态增加field
+     *
+     * */
     addExtCmp: function(obj,attrName){
         Ext.getCmp(attrName+'Cmp') ? Ext.getCmp(attrName+'Cmp').destroy() : null;
         var validationType = obj.validation_type,
@@ -127,7 +127,7 @@ Ext.define('HLSCalculator.controller.FinancialPlanController', {
         }
     },
     onPlanChange: function(that, newValue, oldValue, eOpts ){
-        if(that.id == 'planCmp' && newValue != '-1' && oldValue != '-1'){
+        if(that.id == 'planCmp' && newValue != '-1' && oldValue != '-1' && oldValue){
             this.onFinancialPlanItem(null,newValue,null,null,null);
             Ext.getCmp('leaseItemAmountCmp').setValue(HLSCalculator.utils.Data.getPrice());
         }

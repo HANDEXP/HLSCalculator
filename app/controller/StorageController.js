@@ -59,6 +59,11 @@ Ext.define('HLSCalculator.controller.StorageController', {
         //贷款期限
         var leaseTimes = HLSCalculator.utils.Data.getLeaseTimes();
         Ext.getCmp("quotenper").setData({quoteItemTitle: "贷款期限", quoteItemValue: leaseTimes});
+        //尾款
+        var balloon = HLSCalculator.utils.Data.getBalloon();
+        Ext.getCmp("quoteballoon").setData({quoteItemTitle: "尾款", quoteItemValue: balloon});
+        Ext.getCmp("quoteballoon").setHidden(Ext.getCmp("balloonCmp").getHidden());
+
         //月供
         var monthlyPayment = HLSCalculator.utils.Data.getMonthlyPayment();
         Ext.getCmp("quotemonthlypayment").setData({quoteItemTitle: "月供", quoteItemValue: monthlyPayment});
@@ -92,6 +97,16 @@ Ext.define('HLSCalculator.controller.StorageController', {
 
             },
             failure: function (response) {
+                //debugger;
+                var finalcialData = Ext.getStore('financialplanstore').getData().all,
+                    length = finalcialData.length,
+                    planOptions = [{"index":-1,"text":"请先选择报价方案"}];
+                for(var i = 0;i < length; i++){
+                    planOptions.push({"index":i,"text":finalcialData[i].data.description.default_value});
+                }
+
+                HLSCalculator.utils.Data.setPlanOptions(planOptions);
+                Ext.getCmp("planCmp").setOptions(HLSCalculator.utils.Data.getPlanOptions());
             }
 
 
