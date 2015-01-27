@@ -49,8 +49,8 @@ Ext.define('HLSCalculator.view.FinancialPlanItem',{
                         {
                             xtype : 'button',
                             text : '查看其他方案',
-                            height : '35px',
-                            style : 'margin-top: 10%;margin-left: 10px;margin-right: 10px;border-radius:0;color: white;font-size: 0.8em',
+                            cls: 'x-calc-button',
+                            pressedCls: 'x-calc-button-pressing',
                             listeners : {
                                 tap: function(button, e, eOpts)
                                 {

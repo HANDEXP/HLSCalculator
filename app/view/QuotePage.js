@@ -6,6 +6,10 @@ Ext.define('HLSCalculator.view.QuotePage',{
     xtype: 'quotepage',
     config: {
         id: 'quotepage',
+        scrollable: {
+            direction: 'all',
+            directionLock: true
+        },
         items: [{
             xtype: 'image',
             id: 'headerCmp',

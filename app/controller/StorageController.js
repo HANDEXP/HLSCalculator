@@ -62,7 +62,10 @@ Ext.define('HLSCalculator.controller.StorageController', {
         //尾款
         var balloon = HLSCalculator.utils.Data.getBalloon();
         Ext.getCmp("quoteballoon").setData({quoteItemTitle: "尾款", quoteItemValue: balloon});
-        Ext.getCmp("quoteballoon").setHidden(Ext.getCmp("balloonCmp").getHidden());
+        if(Ext.getCmp("balloonCmp")){
+            Ext.getCmp("quoteballoon").setHidden(Ext.getCmp("balloonCmp").getHidden());
+        }
+
 
         //月供
         var monthlyPayment = HLSCalculator.utils.Data.getMonthlyPayment();

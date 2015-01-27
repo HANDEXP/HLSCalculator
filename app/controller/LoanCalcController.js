@@ -34,13 +34,16 @@ Ext.define('HLSCalculator.controller.LoanCalcController', {
         }
     },
     onTap: function (that, e, eOpts) {
+        this.downPercentage2downPayment();
+        this.balloonPercentage2balloon();
         var planName = Ext.getCmp("planCmp")._value.data.text,
             downPercentage = Ext.getCmp("downPercentageCmp")._value,
             downPayment = Ext.getCmp("downPaymentCmp")._value,
             leaseTimes = parseInt(Ext.getCmp("leaseTimesCmp")._value),
-            price = parseInt(HLSCalculator.utils.Data.getPrice()),
+            price = parseInt(Ext.getCmp('leaseItemAmountCmp').getValue()),
             annualPayTimes = Ext.getCmp("annualPayTimesCmp").getValue(),
             payType = Ext.getCmp("payTypeCmp").getValue(),
+            balloon = Ext.getCmp("balloonCmp").getValue(),
             calculate = HLSCalculator.utils.Common.calculate;
         if (downPercentage != '' && downPayment != '' && leaseTimes != '') {
             var rate = parseFloat(HLSCalculator.utils.Data.getIntRate())/parseFloat(annualPayTimes);
@@ -55,12 +58,12 @@ Ext.define('HLSCalculator.controller.LoanCalcController', {
             //debugger;
             //存入信息
             HLSCalculator.utils.Data.setPlanName(planName);
+            HLSCalculator.utils.Data.setPrice(price);
             HLSCalculator.utils.Data.setDownPaymentRatio(downPercentage)
             HLSCalculator.utils.Data.setDownPayment(downPayment);
             HLSCalculator.utils.Data.setLeaseTimes(leaseTimes);
+            HLSCalculator.utils.Data.setBalloon(balloon);
             HLSCalculator.utils.Data.setMonthlyPayment(monthlyPayment);
-
-            //alert(monthlyPayment);
             //500毫秒后跳转下一页
             Ext.Function.createDelayed(
                 function(){
@@ -217,7 +220,7 @@ Ext.define('HLSCalculator.controller.LoanCalcController', {
         //需讨论
         if (Ext.getCmp('leaseItemAmountCmp')) {
             Ext.getCmp('leaseItemAmountCmp').setValue(price);
-            //this.downPayment2downPercentage();
+            this.balloonPercentage2balloon();
         }
 
         //设置标题

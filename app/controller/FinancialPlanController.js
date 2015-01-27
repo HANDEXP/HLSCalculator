@@ -89,7 +89,7 @@ Ext.define('HLSCalculator.controller.FinancialPlanController', {
         }
         Ext.getCmp("fieldsetCmp").add(Ext.create(cmpType, {
             label: obj.prompt,
-            labelWidth: '10em',
+            labelWidth: '9em',
             id: attrName+'Cmp',
             name: attrName,
             labelCls: 'calc-item',
@@ -97,11 +97,19 @@ Ext.define('HLSCalculator.controller.FinancialPlanController', {
             hidden: obj.display_flag == 'Y' ? false : true,
             required: obj.input_mode == 'REQUIRED' ? true : false,
             requiredCls: 'requiredField',
-            readOnly: obj.input_mode == 'READONLY' ? true : false
+            readOnly: obj.input_mode == 'READONLY' ? true : false,
+            inputCls: obj.percent == '%' ? 'input-align inputWithPercent' : 'input-align',
+            listeners : {
+                focus: function( that, e, eOpts ){
+                    if(that.getId() == 'balloonPercentageCmp' || that.getId() == 'downPercentageCmp'){
+                        that.select();
+                    }
+
+                }
+            }
         }));
         var cmp = Ext.getCmp(attrName+'Cmp');
         if(cmpType == 'Ext.field.Select'){
-            //debugger;
             //添加－1项
             obj.store.splice(0,0,{"value_code":-1,"value_name":'请选择'});
             var store =  Ext.create('Ext.data.Store',{
@@ -117,6 +125,7 @@ Ext.define('HLSCalculator.controller.FinancialPlanController', {
         }
         //下拉框添加数据集
         if(obj.default_value != "" && cmpType != 'Ext.field.Select'){
+
             cmp.setValue(obj.percent == '%' ? format4payment(obj.default_value) : obj.default_value);
         }else{
 
