@@ -52,41 +52,22 @@
     </style>
     <!-- The line below must be kept intact for Sencha Command to build your application -->
     <script id="microloader" type="text/javascript" src=".sencha/app/microloader/development.js"></script>
-    <!--<script>-->
-        <!--// Wait for Cordova to load-->
-        <!--document.addEventListener("deviceready", onDeviceReady, false);-->
-        <!--function onDeviceReady(){-->
-            <!--var db = window.sqlitePlugin.openDatabase({name: "pic.db"});-->
-            <!--db.transaction(function(tx) {-->
-                <!--tx.executeSql('DROP TABLE IF EXISTS pic_table',null,function(e){-->
-                    <!--alert();-->
-                <!--});-->
-                <!--tx.executeSql('CREATE TABLE IF NOT EXISTS pic_table (id integer primary key, type_id integer, type text, base64_data text)');-->
+    <script>
+        // Wait for Cordova to load
+        document.addEventListener("deviceready", onDeviceReady, false);
+        function onDeviceReady(){
+            document.addEventListener("backbutton", backButtonEvent, false);
 
-<!--//                // demonstrate PRAGMA:-->
-<!--//                db.executeSql("pragma table_info (pic_table);", [], function(res) {-->
-<!--//                    console.log("PRAGMA res: " + JSON.stringify(res));-->
-<!--//                });-->
-
-                <!--tx.executeSql("INSERT INTO pic_table (type_id, type, base64_data) VALUES (?,?,?)", [1,"test", "rrr"], function(tx, res) {-->
-                    <!--console.log("insertId: " + res.insertId + " -- probably 1");-->
-                    <!--console.log("rowsAffected: " + res.rowsAffected + " -- should be 1");-->
-
-                    <!--db.transaction(function(tx) {-->
-                        <!--tx.executeSql("select * from pic_table;", [], function(tx, res) {-->
-                            <!--console.log("res.rows.length: " + res.rows.length + " -- should be 1");-->
-                            <!--console.log("res.rows.item(0).cnt: " + res.rows.item(0).cnt + " -- should be 1");-->
-                            <!--alert(res.rows.item(0).type);-->
-                        <!--});-->
-                    <!--});-->
-
-                <!--}, function(e) {-->
-                    <!--alert("ERROR: " + e.message);-->
-                <!--});-->
-            <!--});-->
-
-        <!--}-->
-    <!--</script>-->
+        }
+        function backButtonEvent(){
+            Ext.toast('再触摸一次退出!', 600);
+            document.removeEventListener("backbutton",backButtonEvent,false);
+            var intervalFn = window.setInterval(function(){
+                window.clearInterval(intervalFn);
+                document.addEventListener("backbutton", backButtonEvent, false);
+            },3000)
+        }
+    </script>
 </head>
 <body>
     <div id="appLoadingIndicator">

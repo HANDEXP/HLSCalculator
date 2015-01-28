@@ -18,23 +18,23 @@ Ext.define('HLSCalculator.view.Main', {
         items: [
             {
                 title: '选购车型',
-                iconCls: 'star',
+                iconCls: 'car',
                 xtype: 'selectautopage'
             },
             {
                 title : '报价方案',
-                iconCls: 'action',
+                iconCls: 'pricelist',
                 xtype: 'financialcard'
 
             },
             {
                 title: '贷款计算器',
-                iconCls: 'action',
+                iconCls: 'compose',
                 xtype: 'loancalcpage'
             },
             {
                 title: '报价',
-                iconCls: 'favorites',
+                iconCls: 'report',
                 xtype: 'quotepage'
             }
 

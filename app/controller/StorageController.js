@@ -70,15 +70,13 @@ Ext.define('HLSCalculator.controller.StorageController', {
         //月供
         var monthlyPayment = HLSCalculator.utils.Data.getMonthlyPayment();
         Ext.getCmp("quotemonthlypayment").setData({quoteItemTitle: "月供", quoteItemValue: monthlyPayment});
-
-
-        //Ext.Msg.alert();
     },
     syncFn: function () {
         //financialPlanData.json
 
         Ext.Ajax.request({
-            url: 'http://m.hand-china.com/dev/sample.json',
+            //url: 'http://m.hand-china.com/dev/sample.json',
+            url: 'http://199.10.10.65:8397/lsmobile/modules/price_app/app_price_list.svc',
             //url: 'sample.json',
             success: function (response) {
                 var json, length,planOptions = [{"index":-1,"text":"请先选择报价方案"}],updateIcon;
@@ -145,7 +143,6 @@ Ext.define('HLSCalculator.controller.StorageController', {
                 seriesstore.removeAll();
                 for (var i = 0; i < json.series.length; i++) {
                     seriesstore.add(json.series[i]);
-
                 }
                 seriesstore.sync();
 
@@ -167,10 +164,8 @@ Ext.define('HLSCalculator.controller.StorageController', {
             },
             failure: function (response) {
                 console.log(response);
-                //alert();
             }
         });
-
     },
     init: function () {
         console.log("onLine: " + navigator.onLine);

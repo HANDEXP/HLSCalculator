@@ -3453,6 +3453,39 @@ body.x-desktop {
     content: "W"
 }
 
+.x-tab .x-button-icon.car:before, .x-button .x-button-icon.car:before {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    text-align: center;
+    font-family: "Pictos";
+    content: ","
+}
+
+.x-tab .x-button-icon.pricelist:before, .x-button .x-button-icon.pricelist:before {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    text-align: center;
+    font-family: "Pictos";
+    content: "N"
+}
+
+.x-tab .x-button-icon.report:before, .x-button .x-button-icon.report:before {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    text-align: center;
+    font-family: "Pictos";
+    content: "n"
+}
+
 .x-tab .x-button-icon.delete:before, .x-button .x-button-icon.delete:before {
     position: absolute;
     top: 0;

@@ -93,7 +93,6 @@ Ext.define('HLSCalculator.controller.FinancialPlanController', {
             id: attrName+'Cmp',
             name: attrName,
             labelCls: 'calc-item',
-            //value: obj.percent == '%' ? (parseFloat(obj.default_value) * 100).toString() + obj.percent : obj.default_value,
             hidden: obj.display_flag == 'Y' ? false : true,
             required: obj.input_mode == 'REQUIRED' ? true : false,
             requiredCls: 'requiredField',
@@ -101,9 +100,13 @@ Ext.define('HLSCalculator.controller.FinancialPlanController', {
             inputCls: obj.percent == '%' ? 'input-align inputWithPercent' : 'input-align',
             listeners : {
                 focus: function( that, e, eOpts ){
-                    if(that.getId() == 'balloonPercentageCmp' || that.getId() == 'downPercentageCmp'){
-                        that.select();
+                    if(Ext.os.name == "Android" && that.getXTypes() != 'component/field/textfield/selectfield' && !that.getReadOnly()){
+                        if(parseFloat(that.element.dom.offsetTop) >= 300){
+                            Ext.getCmp("fieldsetCmp").getParent().getScrollable().getScroller().scrollTo(0,that.element.dom.offsetTop-100);
+                        }
+
                     }
+
 
                 }
             }
