@@ -116,9 +116,9 @@ Ext.define('HLSCalculator.controller.StorageController', {
 
 
         Ext.Ajax.request({
-            //url: 'http://m.hand-china.com/dev/auto.json',
+            url: 'http://m.hand-china.com/dev/auto.json',
             //url: 'http://localhost:1841/auto.json',
-            url: 'http://199.10.10.65:8397/lsmobile/modules/price_app/app_auto_data.svc',
+            //url: 'http://199.10.10.65:8397/lsmobile/modules/price_app/app_auto_data.svc',
             success: function (response) {
                 var text,
                     brandstore,

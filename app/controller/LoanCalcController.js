@@ -41,7 +41,7 @@ Ext.define('HLSCalculator.controller.LoanCalcController', {
             downPercentage = Ext.getCmp("downPercentageCmp")._value,
             downPayment = Ext.getCmp("downPaymentCmp")._value,
             leaseTimes = parseInt(Ext.getCmp("leaseTimesCmp")._value),
-            price = parseInt(Ext.getCmp('leaseItemAmountCmp').getValue()),
+            price = parseFloat(Ext.getCmp('leaseItemAmountCmp').getValue()),
             annualPayTimes = Ext.getCmp("annualPayTimesCmp").getValue(),
             payType = Ext.getCmp("payTypeCmp").getValue(),
             balloon = Ext.getCmp("balloonCmp").getValue(),
