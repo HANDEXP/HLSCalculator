@@ -15,19 +15,17 @@ Ext.define('HLSCalculator.view.SelectAutoPage', {
                     id: 'brandSelectFieldCmp',
                     label: '品牌',
                     store: 'brandstore',
+                    displayField: 'value_name',
+                    valueField: 'value_code',
                     listeners: {
                         change: function (selectfield, newValue, oldValue, eOpts) {
                             var store = Ext.getStore('seriesstore'),
-                                isValid = HLSCalculator.utils.Common.isValid;
-                            store.setFilters({
-                                property: "brand_id",
-                                value: new RegExp("1|" + selectfield._value.data.brand_id)
-                            });
-                            store.load();
-                            var cmp = Ext.getCmp('seriesSelectFieldCmp');
-                            cmp.setStore(store);
-                            if (isValid(selectfield._value.data.text)) {
-                                HLSCalculator.utils.Data.setBrand(selectfield._value.data.text)
+                                isValid = HLSCalculator.utils.Common.isValid,
+                                brandId = parseInt(newValue);
+                            store.filter("brand_id",new RegExp("-1|" + brandId));
+                            Ext.getCmp('seriesSelectFieldCmp').setStore(store);
+                            if (isValid(selectfield._value.data.value_code)) {
+                                HLSCalculator.utils.Data.setBrand(selectfield._value.data.value_name)
                             }
                         }
                     }
@@ -36,24 +34,27 @@ Ext.define('HLSCalculator.view.SelectAutoPage', {
                     id: 'seriesSelectFieldCmp',
                     label: '车系',
                     store: 'seriesstore',
+                    displayField: 'value_name',
+                    valueField: 'value_code',
                     listeners: {
                         change: function (selectfield, newValue, oldValue, eOpts) {
-                            var store = Ext.getStore('typestore');
-                            store.setFilters({
-                                property: "series_id",
-                                value: new RegExp("1|" + selectfield._value.data.series_id)
-                            });
-                            store.load();
-                            var cmp = Ext.getCmp('typeSelectFieldCmp');
-                            cmp.setStore(store);
-                            //Ext.Msg.alert('chance', '你选择了: ' + Ext.JSON.encode(newValue));
+                            var store = Ext.getStore('modelstore'),
+                                isValid = HLSCalculator.utils.Common.isValid,
+                                seriesId = parseInt(newValue);
+                            store.filter("series_id",new RegExp("-1|" + seriesId))
+                            Ext.getCmp('modelSelectFieldCmp').setStore(store);
+                            if (isValid(selectfield._value.data.value_code)) {
+                                HLSCalculator.utils.Data.setSeries(selectfield._value.data.value_name)
+                            }
                         }
                     }
                 }, {
                     xtype: 'selectfield',
-                    id: 'typeSelectFieldCmp',
+                    id: 'modelSelectFieldCmp',
                     label: '车型',
-                    store: 'typestore',
+                    store: 'modelstore',
+                    displayField: 'value_name',
+                    valueField: 'value_code',
                     listeners: {
                         change: function (selectfield, newValue, oldValue, eOpts) {
                             //同步初始化时跳过
@@ -69,16 +70,15 @@ Ext.define('HLSCalculator.view.SelectAutoPage', {
                             seriesValue = Ext.getCmp('seriesSelectFieldCmp').getValue();
                             //换图片
                             //seriesValue == 'default' ? null : imageCmp.setSrc('resources/images/' + seriesValue.split('-')[1].toUpperCase() + '.jpg')
-                            base64 = Ext.getStore('picstore').findRecord('pic_id', selectfield._value.data.pic_id).data.base64;
-                            imageCmp.setSrc(base64);
+                            base64 = Ext.getStore('picstore').findRecord('pic_code', Ext.getCmp('seriesSelectFieldCmp')._value.data.pic_code).data.app_picture;
+                            imageCmp.setSrc(base64 != '' ? base64 : '#');
                             //显示报价和车型号
-                            selectfield._value.data.price == '' ? Ext.getCmp('priceLabelCmp').setHtml('厂商指导价：暂无') : Ext.getCmp('priceLabelCmp').setHtml("厂商指导价：" + '¥ ' + HLSCalculator.utils.Common.format4price(selectfield._value.data.price));
-                            selectfield._value.data.value == 'default' ? Ext.getCmp('typeLabelCmp').setHtml('请选择车系和车型') : Ext.getCmp('typeLabelCmp').setHtml([Ext.getCmp('brandSelectFieldCmp')._value.data.text, selectfield._value.data.text].join(' '));
-                            //存入信息
-                            HLSCalculator.utils.Data.setSeries(selectfield._value.data.series_id);
-                            HLSCalculator.utils.Data.setType(selectfield._value.data.text);
-                            HLSCalculator.utils.Data.setPrice(HLSCalculator.utils.Common.float4price(selectfield._value.data.price));
-                            string = [HLSCalculator.utils.Data.getBrand(), HLSCalculator.utils.Data.getType()].join(' ');
+                            selectfield._value.data.guide_price == '' ? Ext.getCmp('priceLabelCmp').setHtml('厂商指导价：暂无') : Ext.getCmp('priceLabelCmp').setHtml("厂商指导价：" + '¥ ' + HLSCalculator.utils.Common.format4price(selectfield._value.data.guide_price));
+                            selectfield._value.data.value_code == '-1' ? Ext.getCmp('modelLabelCmp').setHtml('请选择车系和车型') : Ext.getCmp('modelLabelCmp').setHtml([Ext.getCmp('brandSelectFieldCmp')._value.data.value_name, selectfield._value.data.value_name].join(' '));
+                            ////存入信息
+                            HLSCalculator.utils.Data.setModel(selectfield._value.data.value_name);
+                            HLSCalculator.utils.Data.setPrice(HLSCalculator.utils.Common.float4price(selectfield._value.data.guide_price));
+                            string = [HLSCalculator.utils.Data.getBrand(), HLSCalculator.utils.Data.getModel()].join(' ');
                             //带出车型和厂商指导价
 
                             if (isValid(HLSCalculator.utils.Data.getPrice())) {
@@ -98,7 +98,7 @@ Ext.define('HLSCalculator.view.SelectAutoPage', {
             ]
         }, {
             xtype: 'label',
-            id: 'typeLabelCmp',
+            id: 'modelLabelCmp',
             style: 'text-align: center;',
             html: '  '
         }, {

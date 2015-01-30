@@ -21,7 +21,8 @@ Ext.application({
         'HLSCalculator.utils.Template',
         'Ext.Label',
         'Ext.Toast',
-        'Ext.field.Number'
+        'Ext.field.Number',
+        'Ext.field.Password'
     ],
 
     controllers: [
@@ -43,7 +44,7 @@ Ext.application({
     stores: [
         'SeriesStore',
         'BrandStore',
-        'TypeStore',
+        'ModelStore',
         'FinancialPlanStore',
         'PicStore'
     ],
@@ -51,7 +52,7 @@ Ext.application({
     models: [
         'HLSCalculator.model.Brand',
         'HLSCalculator.model.Series',
-        'HLSCalculator.model.Type',
+        'HLSCalculator.model.Model',
         'HLSCalculator.model.Pic',
         'HLSCalculator.model.FinancialPlan',
         'HLSCalculator.model.ComboBox'

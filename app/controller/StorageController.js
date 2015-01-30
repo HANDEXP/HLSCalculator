@@ -4,8 +4,8 @@
 Ext.define('HLSCalculator.controller.StorageController', {
     extend: 'Ext.app.Controller',
     config: {
-        models: ['Brand', 'Series', 'Type'],
-        stores: ['BrandStore', 'SeriesStore', 'TypeStore'],
+        models: ['Brand', 'Series', 'Model','Pic'],
+        stores: ['BrandStore', 'SeriesStore', 'ModelStore','PicStore'],
         refs: {
             selectautopage: 'selectautopage',
             quotepage: 'quotepage'
@@ -21,7 +21,7 @@ Ext.define('HLSCalculator.controller.StorageController', {
         }
     },
     onSelectPageInit: function () {
-        this.syncFn();
+        this.syncData();
     },
     onItemActivate: function (that, eOpts) {
         //debugger;
@@ -39,29 +39,29 @@ Ext.define('HLSCalculator.controller.StorageController', {
     onQuotePageActive: function (that, eOpts) {
         Ext.getCmp('titleBarCmp').setTitle('报价');
         //车型
-        var type = [HLSCalculator.utils.Data.getBrand(), HLSCalculator.utils.Data.getType()].join(' ');
-        Ext.getCmp("quotetype").setData({quoteItemTitle: "车型", quoteItemValue: type});
+        var model = [HLSCalculator.utils.Data.getBrand(), HLSCalculator.utils.Data.getModel()].join(' ');
+        Ext.getCmp("quotemodel").setData({quoteItemTitle: "车型", quoteItemValue: model});
         //产品
         var plan = HLSCalculator.utils.Data.getPlanName();
         Ext.getCmp("quoteplan").setData({quoteItemTitle: "产品", quoteItemValue: plan});
         //车价
         var price = HLSCalculator.utils.Data.getPrice();
-        Ext.getCmp("quoteprice").setData({quoteItemTitle: "车价", quoteItemValue: price});
+        Ext.getCmp("quoteprice").setData({quoteItemTitle: "车价", quoteItemValue: parseFloat(price).toFixed(2)});
         //首付比例
         var downPaymentRatio = HLSCalculator.utils.Data.getDownPaymentRatio();
         Ext.getCmp("quotedownpaymentratio").setData({quoteItemTitle: "首付比例", quoteItemValue: downPaymentRatio});
         //首付金额
         var downPayment = HLSCalculator.utils.Data.getDownPayment();
-        Ext.getCmp("quotedownpayment").setData({quoteItemTitle: "首付金额", quoteItemValue: downPayment});
+        Ext.getCmp("quotedownpayment").setData({quoteItemTitle: "首付金额", quoteItemValue: parseFloat(downPayment).toFixed(2)});
         //贷款金额
         var loanPayment = price - downPayment;
-        Ext.getCmp("quoteloan").setData({quoteItemTitle: "贷款金额", quoteItemValue: loanPayment});
+        Ext.getCmp("quoteloan").setData({quoteItemTitle: "贷款金额", quoteItemValue: parseFloat(loanPayment).toFixed(2)});
         //贷款期限
         var leaseTimes = HLSCalculator.utils.Data.getLeaseTimes();
         Ext.getCmp("quotenper").setData({quoteItemTitle: "贷款期限", quoteItemValue: leaseTimes});
         //尾款
         var balloon = HLSCalculator.utils.Data.getBalloon();
-        Ext.getCmp("quoteballoon").setData({quoteItemTitle: "尾款", quoteItemValue: balloon});
+        Ext.getCmp("quoteballoon").setData({quoteItemTitle: "尾款", quoteItemValue: parseFloat(balloon).toFixed(2)});
         if(Ext.getCmp("balloonCmp")){
             Ext.getCmp("quoteballoon").setHidden(Ext.getCmp("balloonCmp").getHidden());
         }
@@ -71,7 +71,8 @@ Ext.define('HLSCalculator.controller.StorageController', {
         var monthlyPayment = HLSCalculator.utils.Data.getMonthlyPayment();
         Ext.getCmp("quotemonthlypayment").setData({quoteItemTitle: "月供", quoteItemValue: monthlyPayment});
     },
-    syncFn: function () {
+    //同步数据，不包括图片
+    syncData: function () {
         //financialPlanData.json
 
         Ext.Ajax.request({
@@ -115,24 +116,29 @@ Ext.define('HLSCalculator.controller.StorageController', {
 
 
         Ext.Ajax.request({
-            url: 'http://m.hand-china.com/dev/data.json',
+            //url: 'http://m.hand-china.com/dev/auto.json',
+            //url: 'http://localhost:1841/auto.json',
+            url: 'http://199.10.10.65:8397/lsmobile/modules/price_app/app_auto_data.svc',
             success: function (response) {
                 var text,
                     brandstore,
                     seriesstore,
-                    typestore,
-                    picstore,
+                    modelstore,
                     json;
                 text = response.responseText;
-                json = JSON.parse(text);
+                if(JSON.parse(text).head.code !== 'success'){
+                    return;
+                }
+                json = JSON.parse(text).body;
                 // process server response here
                 //清空旧数据
                 Ext.getStore('brandstore').removeAll();
                 Ext.getStore('seriesstore').removeAll();
-                Ext.getStore('typestore').removeAll();
+                Ext.getStore('modelstore').removeAll();
+
                 //本地化存brandstore
                 brandstore = Ext.getStore('brandstore');
-                brandstore.removeAll();
+                brandstore.add({"value_code":"-1","value_name":"请选择品牌","brand_code":"-1"});
                 for (var i = 0; i < json.brands.length; i++) {
                     brandstore.add(json.brands[i]);
                 }
@@ -140,32 +146,61 @@ Ext.define('HLSCalculator.controller.StorageController', {
 
                 //本地化存seriesstore
                 seriesstore = Ext.getStore('seriesstore');
-                seriesstore.removeAll();
+                seriesstore.add({"value_code":"-1","value_name":"请选择车系","series_code":"-1","brand_id":"-1","app_picture":""});
                 for (var i = 0; i < json.series.length; i++) {
                     seriesstore.add(json.series[i]);
                 }
                 seriesstore.sync();
 
-                //本地化存typesstore
-                typestore = Ext.getStore('typestore');
-                typestore.removeAll();
-                for (var i = 0; i < json.types.length; i++) {
-                    typestore.add(json.types[i]);
+                //本地化存modelstore
+                modelstore = Ext.getStore('modelstore');
+                modelstore.add({"value_code":"-1","value_name":"请选择车型","series_id":"-1","guide_price":"0"});
+                for (var i = 0; i < json.models.length; i++) {
+                    modelstore.add(json.models[i]);
                 }
-                //debugger;
-                typestore.sync();
-                //本地化存储图片
-                picstore = Ext.getStore('picstore');
-                picstore.removeAll();
-                for (var i = 0; i < json.pics.length; i++) {
-                    picstore.add(json.pics[i]);
-                }
-                picstore.sync();
+                modelstore.sync();
+
             },
             failure: function (response) {
                 console.log(response);
             }
         });
+
+        if(parseFloat(Ext.getStore('picstore').getData().length) == 0){
+            //debugger;
+            this.syncPic();
+        }
+    },
+    //同步图片
+    syncPic: function(){
+        Ext.Ajax.request({
+            url: 'http://199.10.10.65:8397/lsmobile/modules/price_app/app_picture.svc',
+            //url: 'http://localhost:1841/app_picture.json',
+            //url: 'http://m.hand-china.com/dev/app_picture.svc',
+            success: function(response){
+                var text,
+                    picstore,
+                    json;
+
+                text = response.responseText;
+                if(JSON.parse(text).head.code !== 'success'){
+                    return;
+                }
+                json = JSON.parse(text).body;
+                //本地化存储图片
+                picstore = Ext.getStore('picstore');
+                picstore.removeAll();
+                picstore.add({"pic_code":"","app_picture":""});
+                for (var i = 0; i < json.pics.length; i++) {
+                    picstore.add(json.pics[i]);
+                }
+                picstore.sync();
+            },
+            failure: function(response){
+                console.log(response);
+            }
+        });
+
     },
     init: function () {
         console.log("onLine: " + navigator.onLine);

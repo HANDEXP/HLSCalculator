@@ -10,11 +10,14 @@ Ext.define('HLSCalculator.model.Brand',{
             type: 'uuid',
             prefix: 'identifier_'
         },
-        fields: ['brand_id','text','value'],
+        /* 旧格式 */
+        //fields: ['brand_id','text','value'],
         hasMany: {
             model: 'HLSCalculator.model.Series',
             name: 'series',
-            foreignKey: 'series_id'
-        }
+            foreignKey: 'brand_id'
+        },
+        /* 新格式 */
+        fields: ['value_code','value_name','brand_code']
     }
 });

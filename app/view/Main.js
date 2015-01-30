@@ -28,7 +28,7 @@ Ext.define('HLSCalculator.view.Main', {
 
             },
             {
-                title: '贷款计算器',
+                title: '贷款计算',
                 iconCls: 'compose',
                 xtype: 'loancalcpage'
             },

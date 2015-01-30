@@ -7,20 +7,21 @@ Ext.define('HLSCalculator.utils.Data',{
         //选购车型
         brand: '',
         series: '',
-        type: '',
-        price: '',
+        model: '',
+        price: '0',
         //贷款
         monthlyPayment: '',
         //金融方案
         "downPaymentRatio": "",
-        "downPayment": "",
+        "downPayment": "0",
         "intRate": "",
         "annualPayItems": "",
         "leaseTimes": "",
         "balloonRatio": "",
-        "balloon": "",
+        "balloon": "0",
         "payType": "",
         "planName": "请先选择报价方案",
+        "planIndex": "-1",
         //上下限
         "downPaymentRatioValidation":{},
         "balloonRatioValidation":{},

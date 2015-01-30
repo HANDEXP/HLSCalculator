@@ -26,11 +26,15 @@ Ext.define('HLSCalculator.controller.FinancialPlanController', {
     onFinancialCardActive: function (that, eOpts) {
         Ext.getCmp('titleBarCmp').setTitle('报价方案');
         Ext.getDom('ext-element-68').innerHTML = "";
+        //alert("screen.width:"+screen.width+"screen.height:"+screen.height);
     },
     onFinancialPlanItem: function (that, index, target, record, e) {
-        var data = Ext.getStore('financialplanstore').getAt(index).data;
-        Ext.getCmp('plan_title_id').set('html', data.description.default_value);
-        Ext.getCmp('plan_desc_id').set('html', data.app_description.default_value);
+        var data = Ext.getStore('financialplanstore').getAt(index).data,
+            base64;
+        Ext.getCmp('planTitleCmp').set('html', data.description.default_value);
+        Ext.getCmp('planDescCmp').set('html', data.app_description.default_value);
+        base64 = Ext.getStore('picstore').findRecord('pic_code', data.pic_code.default_value).data.app_picture;
+        Ext.getCmp('planImgCmp').set('src',base64 != '' ? base64 : '#');
         //存报价方案数据
         HLSCalculator.utils.Data.setDownPaymentRatio(data.down_payment_ratio.default_value);
         HLSCalculator.utils.Data.setIntRate(data.int_rate.default_value);
@@ -39,6 +43,7 @@ Ext.define('HLSCalculator.controller.FinancialPlanController', {
         HLSCalculator.utils.Data.setBalloonRatio(data.balloon_ratio.default_value);
         HLSCalculator.utils.Data.setPayType(data.pay_type.default_value);
         HLSCalculator.utils.Data.setPlanName(data.description.default_value);
+        HLSCalculator.utils.Data.setPlanIndex(index);
 
         //存上下线
         HLSCalculator.utils.Data.setDownPaymentRatioValidation({'upper_limit':data.down_payment_ratio.upper_limit,'lower_limit':data.down_payment_ratio.lower_limit});
@@ -64,6 +69,7 @@ Ext.define('HLSCalculator.controller.FinancialPlanController', {
         //先付、后付
         this.addExtCmp(data.pay_type,'payType');
         Ext.getCmp('financialcard').setActiveItem(1);
+
     },
     /*
      * 动态增加field
@@ -72,7 +78,8 @@ Ext.define('HLSCalculator.controller.FinancialPlanController', {
     addExtCmp: function(obj,attrName){
         Ext.getCmp(attrName+'Cmp') ? Ext.getCmp(attrName+'Cmp').destroy() : null;
         var validationType = obj.validation_type,
-            format4payment = HLSCalculator.utils.Common.format4payment;
+            format4payment = HLSCalculator.utils.Common.format4payment,
+            cmpType;
         switch (validationType){
             case 'NUMBERFIELD':
                 if(attrName =='intRate' || attrName =='downPercentage' || attrName == 'balloonPercentage'){
@@ -104,10 +111,7 @@ Ext.define('HLSCalculator.controller.FinancialPlanController', {
                         if(parseFloat(that.element.dom.offsetTop) >= 300){
                             Ext.getCmp("fieldsetCmp").getParent().getScrollable().getScroller().scrollTo(0,that.element.dom.offsetTop-100);
                         }
-
                     }
-
-
                 }
             }
         }));
@@ -121,7 +125,7 @@ Ext.define('HLSCalculator.controller.FinancialPlanController', {
                 data: obj.store
             });
 
-            cmp.setStore(store)
+            cmp.setStore(store);
             cmp.setDisplayField("value_name");
             cmp.setValueField("value_code");
             cmp.setValue(obj.default_value);

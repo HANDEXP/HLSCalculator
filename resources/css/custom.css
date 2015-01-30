@@ -5827,7 +5827,7 @@ body {
 
 div.quoteItems {
     width: 100%;
-    margin: 6% 0 6% 0;
+    margin: 5% 0 5% 0;
     display: block;
 }
 
@@ -5843,7 +5843,7 @@ div.quoteItemTitle {
 
 div.quoteItemLine {
     background: #ccd9dc;
-    width: 18%;
+    width: 15%;
     height: 1px;
     margin: 0.5em 3% 0.5em 3%;
 }
@@ -5857,7 +5857,7 @@ div.quoteItemLine {
 }
 
 div.quoteItemValue {
-    width: 52%;
+    width: 55%;
     text-align: left;
     color: #4d7381;
 }
@@ -5932,7 +5932,7 @@ div.quoteItemValue {
 
     div.quoteItemLine {
         background: #ccd9dc;
-        width: 15%;
+        width: 10%;
         height: 3px;
         margin: 0.5em 3% 0.5em 3%;
     }
@@ -5946,7 +5946,7 @@ div.quoteItemValue {
     }
 
     div.quoteItemValue {
-        width: 52%;
+        width: 57%;
         text-align: left;
         color: #4d7381;
     }
@@ -6000,11 +6000,12 @@ div.quoteItemValue {
 @media (min-device-width:350px) and (min-device-height:630px) and (-webkit-min-device-pixel-ratio:2) {
     body {
         font-size: 120% !important;
+
     }
 
     div.quoteItems {
         width: 100%;
-        margin: 7% 0 7% 0;
+        margin: 6% 0 6% 0;
         display: block;
     }
 
@@ -6020,7 +6021,7 @@ div.quoteItemValue {
 
     div.quoteItemLine {
         background: #ccd9dc;
-        width: 20%;
+        width: 10%;
         height: 3px;
         margin: 0.5em 3% 0.5em 3%;
     }
@@ -6034,13 +6035,57 @@ div.quoteItemValue {
     }
 
     div.quoteItemValue {
-        width: 50%;
+        width: 60%;
+        text-align: left;
+        color: #4d7381;
+    }
+}
+
+/* 媒体查询样式 htc one m7*/
+@media (-webkit-min-device-pixel-ratio:3.0) and (max-device-width:410px) {
+    body {
+        font-size: 110% !important;
+    }
+
+    div.quoteItems {
+        width: 100%;
+        margin: 5% 0 5% 0;
+        display: block;
+    }
+
+    div.quoteItemTitle, div.quoteItemLine, div.quoteItemValue {
+        float: left;
+        /*font-size: 0.8em;*/
+    }
+
+    div.quoteItemTitle {
+        width: 24%;
+        text-align: right;
+    }
+
+    div.quoteItemLine {
+        background: #ccd9dc;
+        width: 10%;
+        height: 3px;
+        margin: 0.5em 3% 0.5em 3%;
+    }
+
+    .quoteLabel {
+        bottom: 5px;
+        position: absolute;
+        /*font-size: 1em;*/
+        color: #4d7381;
+        left: 2em;
+    }
+
+    div.quoteItemValue {
+        width: 60%;
         text-align: left;
         color: #4d7381;
     }
 }
 /* 媒体查询样式 ip6p*/
-@media (-webkit-min-device-pixel-ratio:3.0) {
+@media (-webkit-min-device-pixel-ratio:3.0) and (device-width:414px) {
     body {
         font-size: 135% !important;
     }
@@ -6063,7 +6108,7 @@ div.quoteItemValue {
 
     div.quoteItemLine {
         background: #ccd9dc;
-        width: 20%;
+        width: 10%;
         height: 3px;
         margin: 0.5em 3% 0.5em 3%;
     }
@@ -6077,7 +6122,7 @@ div.quoteItemValue {
     }
 
     div.quoteItemValue {
-        width: 50%;
+        width: 60%;
         text-align: left;
         color: #4d7381;
     }

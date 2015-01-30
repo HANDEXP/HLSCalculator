@@ -17,6 +17,7 @@ Ext.define('HLSCalculator.model.FinancialPlan',{
             {name: 'code',type: 'object'},
             {name: 'description',type: 'object'},
             {name: 'app_description',type: 'object'},
+            {name: 'pic_code',type: 'object'},
             {name: 'lease_item_amount',type: 'object'},
             {name: 'down_payment_ratio',type: 'object'},
             {name: 'down_payment',type: 'object'},

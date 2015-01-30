@@ -11,11 +11,9 @@ Ext.define('HLSCalculator.model.Pic',{
             prefix: 'identifier_'
         },
         fields: [{
-            name: 'pic_id'
+            name: 'pic_code'
         },{
-            name: 'desc'
-        },{
-            name: 'base64'
+            name: 'app_picture'
         }]
     }
 })

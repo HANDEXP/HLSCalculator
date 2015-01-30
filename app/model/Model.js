@@ -1,9 +1,9 @@
 /**
  * Created by gonglixuan on 14/12/25.
  */
-Ext.define('HLSCalculator.model.Series',{
+Ext.define('HLSCalculator.model.Model',{
     extend: 'Ext.data.Model',
-    requires: ['Ext.data.association.BelongsTo','Ext.data.association.HasMany','Ext.data.identifier.Uuid'],
+    requires: ['Ext.data.association.BelongsTo','Ext.data.identifier.Uuid'],
     config: {
         idProperty: 'id',
         identifier: {
@@ -12,22 +12,21 @@ Ext.define('HLSCalculator.model.Series',{
         },
         /* 旧格式 */
         //fields: [{
-        //    name: 'series_id'
+        //    name: 'type_id'
         //},{
         //    name: 'text'
         //},{
         //    name: 'value'
         //},{
-        //    name: 'brand_id',
+        //    name: 'series_id',
         //    type: 'int'
+        //},{
+        //    name: 'price'
+        //},{
+        //    name: 'pic_id'
         //}],
-        belongsTo: {
-            model: 'HLSCalculator.model.Brand'
-        },
-        //hasMany: {
-        //    model: 'HLSCalculator.model.Type',
-        //    name: 'type',
-        //    foreignKey: 'type_id'
+        //belongsTo: {
+        //    model: 'HLSCalculator.model.Series'
         //}
         /* 新格式 */
         fields: [{
@@ -35,12 +34,10 @@ Ext.define('HLSCalculator.model.Series',{
         },{
             name: 'value_name'
         },{
-            name: 'series_code'
+            name: 'series_id'
         },{
-            name: 'brand_id',
+            name: 'guide_price',
             type: 'int'
-        },{
-            name: 'pic_code'
         }]
     }
-})
+});

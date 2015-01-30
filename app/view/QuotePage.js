@@ -17,10 +17,10 @@ Ext.define('HLSCalculator.view.QuotePage',{
             cls: 'header'
         },{
             xtype: 'xquoteitem',
-            id: 'quotetype',
+            id: 'quotemodel',
             data: {
                 quoteItemTitle: '车型',
-                quoteItemValue: '2014款GLK200标准型'
+                quoteItemValue: ''
             }
         },{
             xtype: 'xquoteitem',

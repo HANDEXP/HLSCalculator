@@ -37,6 +37,7 @@ Ext.define('HLSCalculator.controller.LoanCalcController', {
         this.downPercentage2downPayment();
         this.balloonPercentage2balloon();
         var planName = Ext.getCmp("planCmp")._value.data.text,
+            planValue = Ext.getCmp("planCmp").getValue(),
             downPercentage = Ext.getCmp("downPercentageCmp")._value,
             downPayment = Ext.getCmp("downPaymentCmp")._value,
             leaseTimes = parseInt(Ext.getCmp("leaseTimesCmp")._value),
@@ -44,8 +45,10 @@ Ext.define('HLSCalculator.controller.LoanCalcController', {
             annualPayTimes = Ext.getCmp("annualPayTimesCmp").getValue(),
             payType = Ext.getCmp("payTypeCmp").getValue(),
             balloon = Ext.getCmp("balloonCmp").getValue(),
+            isValid = HLSCalculator.utils.Common.isValid,
             calculate = HLSCalculator.utils.Common.calculate;
-        if (downPercentage != '' && downPayment != '' && leaseTimes != '') {
+
+        if (downPercentage != '' && downPayment != '' && leaseTimes != '' && isValid(planValue)) {
             var rate = parseFloat(HLSCalculator.utils.Data.getIntRate())/parseFloat(annualPayTimes);
             var pv = parseInt(downPayment) - parseInt(price);
             var fv = price * parseFloat(HLSCalculator.utils.Data.getBalloonRatio() != "" ? HLSCalculator.utils.Data.getBalloonRatio() : '0');
@@ -172,13 +175,13 @@ Ext.define('HLSCalculator.controller.LoanCalcController', {
                 break;
             case 1:
                 //弹窗&清空
-                Ext.toast('首付比例低于下限', 1500);
+                percentageCmp == 'downPercentageCmp' ? Ext.toast('首付比例低于下限', 1500) : Ext.toast('大额尾款比例低于下限', 1500);
                 Ext.getCmp(percentageCmp) ? Ext.getCmp(percentageCmp).setValue(format4payment(lowerLimit)) : null;
                 this.downPercentage2downPayment(null, null, null);
                 return false;
                 break;
             case 2:
-                Ext.toast('首付比例高于上限', 1500);
+                percentageCmp == 'downPercentageCmp' ? Ext.toast('首付比例高于上限', 1500) : Ext.toast('大额尾款比例高于上限', 1500);
                 Ext.getCmp(percentageCmp) ? Ext.getCmp(percentageCmp).setValue(format4payment(upperLimit)) : null;
                 this.downPercentage2downPayment(null, null, null);
                 return false;
@@ -189,15 +192,17 @@ Ext.define('HLSCalculator.controller.LoanCalcController', {
         }
     },
     onLoanCalcPageActive: function (that, eOpts) {
-        var type,
+        var model,
             planName,
+            planIndex,
             downPaymentRatio,
             downPayment,
             leaseTimes,
             price,
             isValid = HLSCalculator.utils.Common.isValid;
-        type = HLSCalculator.utils.Data.getType();
+        model = HLSCalculator.utils.Data.getModel();
         planName = HLSCalculator.utils.Data.getPlanName();
+        planIndex = HLSCalculator.utils.Data.getPlanIndex();
         downPaymentRatio = HLSCalculator.utils.Data.getDownPaymentRatio();
         leaseTimes = HLSCalculator.utils.Data.getLeaseTimes();
         price = HLSCalculator.utils.Data.getPrice();
@@ -205,8 +210,7 @@ Ext.define('HLSCalculator.controller.LoanCalcController', {
             downPayment = parseFloat(price) * (parseFloat(downPaymentRatio) > 1 || downPaymentRatio.charAt(downPaymentRatio.length - 1) == '%' ? parseFloat(downPaymentRatio) / 100 : parseFloat(downPaymentRatio));
         }
 
-        console.log("type = " + type);
-        if (type == "" || !isValid(type)) {
+        if (model == "" || !isValid(model)) {
             Ext.Msg.alert('', '   请先选择车型。     ', function () {
                 Ext.getCmp('mainCmp').setActiveItem(0);
             });
@@ -216,7 +220,7 @@ Ext.define('HLSCalculator.controller.LoanCalcController', {
                 Ext.getCmp('mainCmp').setActiveItem(1);
             });
         }
-        Ext.getCmp("planCmp").setValue(planName);
+        Ext.getCmp("planCmp").setValue(planIndex);
         //需讨论
         if (Ext.getCmp('leaseItemAmountCmp')) {
             Ext.getCmp('leaseItemAmountCmp').setValue(price);
@@ -224,6 +228,6 @@ Ext.define('HLSCalculator.controller.LoanCalcController', {
         }
 
         //设置标题
-        Ext.getCmp('titleBarCmp').setTitle('贷款计算器');
+        Ext.getCmp('titleBarCmp').setTitle('贷款计算');
     }
 })
