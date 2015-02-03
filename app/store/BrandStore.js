@@ -9,14 +9,6 @@ Ext.define('HLSCalculator.store.BrandStore',{
         storeId: 'brandstore',
         model: 'HLSCalculator.model.Brand',
         autoLoad: true,
-        //proxy: {
-        //    type: 'ajax',
-        //    reader: {
-        //        type: 'json',
-        //        rootProperty: 'brands'
-        //    },
-        //    url: 'resources/data/data.json'
-        //}
         proxy: {
             type: 'localstorage',
             id: 'brand'

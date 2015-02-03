@@ -53,12 +53,6 @@ Ext.define('HLSCalculator.controller.LoanCalcController', {
             var pv = parseInt(downPayment) - parseInt(price);
             var fv = price * parseFloat(HLSCalculator.utils.Data.getBalloonRatio() != "" ? HLSCalculator.utils.Data.getBalloonRatio() : '0');
             var monthlyPayment = calculate(rate, leaseTimes, pv, fv, parseInt(payType));
-            //console.log("rate:"+rate);
-            //console.log("leaseTimes:"+leaseTimes);
-            //console.log("pv:"+pv);
-            //console.log("fv:"+fv);
-            //console.log("monthlyPayment:"+monthlyPayment);
-            //debugger;
             //存入信息
             HLSCalculator.utils.Data.setPlanName(planName);
             HLSCalculator.utils.Data.setPrice(price);

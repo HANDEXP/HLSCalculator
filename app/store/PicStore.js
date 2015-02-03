@@ -9,14 +9,6 @@ Ext.define('HLSCalculator.store.PicStore',{
         storeId: 'picstore',
         model: 'HLSCalculator.model.Pic',
         autoLoad: true,
-        //proxy: {
-        //    type: 'ajax',
-        //    reader: {
-        //        type: 'json',
-        //        rootProperty: 'brands'
-        //    },
-        //    url: 'resources/data/data.json'
-        //}
         proxy: {
             type: 'localstorage',
             id: 'pic'

@@ -24,7 +24,6 @@ Ext.define('HLSCalculator.controller.StorageController', {
         this.syncData();
     },
     onItemActivate: function (that, eOpts) {
-        //debugger;
         switch (that.title) {
             case '报价':
                 this.onQuotePageActive(that, eOpts);
@@ -73,11 +72,9 @@ Ext.define('HLSCalculator.controller.StorageController', {
     },
     //同步数据，不包括图片
     syncData: function () {
-        //financialPlanData.json
-
         Ext.Ajax.request({
             //url: 'http://m.hand-china.com/dev/sample.json',
-            url: 'http://199.10.10.65:8397/lsmobile/modules/price_app/app_price_list.svc',
+            url: 'http://61.155.20.214/lshdev/modules/price_app/app_price_list.svc',
             //url: 'sample.json',
             success: function (response) {
                 var json, length,planOptions = [{"index":-1,"text":"请先选择报价方案"}],updateIcon;
@@ -95,8 +92,6 @@ Ext.define('HLSCalculator.controller.StorageController', {
                 Ext.getCmp("planCmp").setOptions(HLSCalculator.utils.Data.getPlanOptions());
                 finalcialStroe.sync();
                 Ext.getDom('ext-element-68').innerHTML = "<div class=\"newUpdate\"></div>";
-
-
             },
             failure: function (response) {
                 //debugger;
@@ -116,9 +111,9 @@ Ext.define('HLSCalculator.controller.StorageController', {
 
 
         Ext.Ajax.request({
-            url: 'http://m.hand-china.com/dev/auto.json',
+            //url: 'http://m.hand-china.com/dev/auto.json',
             //url: 'http://localhost:1841/auto.json',
-            //url: 'http://199.10.10.65:8397/lsmobile/modules/price_app/app_auto_data.svc',
+            url: 'http://61.155.20.214/lshdev/modules/price_app/app_auto_data.svc',
             success: function (response) {
                 var text,
                     brandstore,
@@ -174,9 +169,9 @@ Ext.define('HLSCalculator.controller.StorageController', {
     //同步图片
     syncPic: function(){
         Ext.Ajax.request({
-            url: 'http://199.10.10.65:8397/lsmobile/modules/price_app/app_picture.svc',
+            url: 'http://61.155.20.214/lshdev/modules/price_app/app_price_list.svc',
             //url: 'http://localhost:1841/app_picture.json',
-            //url: 'http://m.hand-china.com/dev/app_picture.svc',
+            //url: 'http://m.hand-china.com/dev/app_picture.json',
             success: function(response){
                 var text,
                     picstore,

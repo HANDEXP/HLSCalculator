@@ -6281,3 +6281,7 @@ div.PercentIcon {
     /*line-height: 1.6em;*/
     /*padding: .4em;*/
 }
+
+#ext-input-4 {
+    padding-right: 0;
+}

@@ -7,12 +7,6 @@ Ext.define('HLSCalculator.store.ModelStore',{
     xtype: 'modelstore',
     config: {
         storeId: 'modelstore',
-        //filters: [
-        //    {
-        //        property: "value_code",
-        //        value: '-1'
-        //    }
-        //],
         model: 'HLSCalculator.model.Model',
         autoLoad: true,
         proxy: {

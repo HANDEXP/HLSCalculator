@@ -112,6 +112,11 @@ Ext.define('HLSCalculator.controller.FinancialPlanController', {
                             Ext.getCmp("fieldsetCmp").getParent().getScrollable().getScroller().scrollTo(0,that.element.dom.offsetTop-100);
                         }
                     }
+                },
+                clearicontap: function(that, e, eOpts){
+                    if(that.getXTypes() != 'component/field/textfield/selectfield'){
+                        that.focus();
+                    }
                 }
             }
         }));
@@ -139,7 +144,7 @@ Ext.define('HLSCalculator.controller.FinancialPlanController', {
         }
         //车价
         if(attrName == 'leaseItemAmount'){
-            //cmp.setValue(HLSCalculator.utils.Data.getPrice());
+
         }
     },
     onPlanChange: function(that, newValue, oldValue, eOpts ){

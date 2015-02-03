@@ -69,7 +69,6 @@ Ext.define('HLSCalculator.view.SelectAutoPage', {
                             imageCmp = Ext.getCmp('imageCmp');
                             seriesValue = Ext.getCmp('seriesSelectFieldCmp').getValue();
                             //换图片
-                            //seriesValue == 'default' ? null : imageCmp.setSrc('resources/images/' + seriesValue.split('-')[1].toUpperCase() + '.jpg')
                             base64 = Ext.getStore('picstore').findRecord('pic_code', Ext.getCmp('seriesSelectFieldCmp')._value.data.pic_code).data.app_picture;
                             imageCmp.setSrc(base64 != '' ? base64 : '#');
                             //显示报价和车型号

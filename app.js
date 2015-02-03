@@ -76,6 +76,14 @@ Ext.application({
     },
 
     launch: function () {
+        
+        Function.prototype.method = function (name, func) {
+            var that = this;
+            if(!that.prototype[name]){
+                this.prototype[name] = func;
+            }
+            return this;
+        };
         // Destroy the #appLoadingIndicator element
 
         Ext.fly('appLoadingIndicator').destroy();
