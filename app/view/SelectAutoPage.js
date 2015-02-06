@@ -104,7 +104,7 @@ Ext.define('HLSCalculator.view.SelectAutoPage', {
             xtype: 'image',
             id: 'imageCmp',
             src: '',
-            style: 'margin: 0 auto 0 auto;max-width: 100%;background: center no-repeat;',
+            style: 'margin: 0 auto 0 auto;max-width: 100%;background: center no-repeat;background-size: contain;',
             width: '100%',
             height: '45%'
         }, {

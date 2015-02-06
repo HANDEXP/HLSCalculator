@@ -33,6 +33,7 @@ Ext.define('HLSCalculator.controller.FinancialPlanController', {
             base64;
         Ext.getCmp('planTitleCmp').set('html', data.description.default_value);
         Ext.getCmp('planDescCmp').set('html', data.app_description.default_value);
+        //debugger;
         base64 = Ext.getStore('picstore').findRecord('pic_code', data.pic_code.default_value).data.app_picture;
         Ext.getCmp('planImgCmp').set('src',base64 != '' ? base64 : '#');
         //存报价方案数据

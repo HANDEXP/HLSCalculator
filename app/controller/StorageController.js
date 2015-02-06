@@ -38,7 +38,7 @@ Ext.define('HLSCalculator.controller.StorageController', {
     onQuotePageActive: function (that, eOpts) {
         Ext.getCmp('titleBarCmp').setTitle('报价');
         //车型
-        var model = [HLSCalculator.utils.Data.getBrand(), HLSCalculator.utils.Data.getModel()].join(' ');
+        var model = [HLSCalculator.utils.Data.getBrand(), HLSCalculator.utils.Data.getModel().replace(/ /g,"")].join(' ');
         Ext.getCmp("quotemodel").setData({quoteItemTitle: "车型", quoteItemValue: model});
         //产品
         var plan = HLSCalculator.utils.Data.getPlanName();
@@ -168,8 +168,12 @@ Ext.define('HLSCalculator.controller.StorageController', {
     },
     //同步图片
     syncPic: function(){
+        Ext.Viewport.setMasked({
+            xtype: 'loadmask',
+            message: '同步数据...请稍等'
+        });
         Ext.Ajax.request({
-            url: 'http://61.155.20.214/lshdev/modules/price_app/app_price_list.svc',
+            url: 'http://61.155.20.214/lshdev/modules/price_app/app_picture.svc',
             //url: 'http://localhost:1841/app_picture.json',
             //url: 'http://m.hand-china.com/dev/app_picture.json',
             success: function(response){
@@ -190,9 +194,11 @@ Ext.define('HLSCalculator.controller.StorageController', {
                     picstore.add(json.pics[i]);
                 }
                 picstore.sync();
+                Ext.Viewport.setMasked(false);
             },
             failure: function(response){
                 console.log(response);
+                Ext.Viewport.setMasked(false);
             }
         });
 

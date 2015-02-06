@@ -5885,7 +5885,7 @@ div.quoteItemValue {
 
     div.quoteItemLine {
         background: #ccd9dc;
-        width: 24%;
+        width: 15%;
         height: 3px;
         margin: 0.5em 3% 0.5em 3%;
 
@@ -5900,7 +5900,7 @@ div.quoteItemValue {
     }
 
     div.quoteItemValue {
-        width: 45%;
+        width: 54%;
         text-align: left;
         color: #4d7381;
     }
