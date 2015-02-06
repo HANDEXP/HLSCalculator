@@ -91,7 +91,7 @@ Ext.define('HLSCalculator.controller.StorageController', {
                 HLSCalculator.utils.Data.setPlanOptions(planOptions);
                 Ext.getCmp("planCmp").setOptions(HLSCalculator.utils.Data.getPlanOptions());
                 finalcialStroe.sync();
-                Ext.getDom('ext-element-68').innerHTML = "<div class=\"newUpdate\"></div>";
+                document.querySelector('.pricelist').innerHTML = "<div class=\"newUpdate\"></div>";
             },
             failure: function (response) {
                 //debugger;

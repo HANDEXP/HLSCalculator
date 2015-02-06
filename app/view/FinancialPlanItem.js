@@ -59,8 +59,6 @@ Ext.define('HLSCalculator.view.FinancialPlanItem',{
 
                                 }
                             }
-
-
                         }
 
                     ],
